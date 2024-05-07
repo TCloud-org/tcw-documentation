@@ -23,7 +23,7 @@ export const HomePage = () => {
   return (
     <Container>
       <MaskedBackground />
-      <Flex vertical gap={64}>
+      <Flex vertical gap={64} className="z-10">
         <Flex vertical className="py-16">
           <Typography.Title level={2}>
             Welcome to The Cloud Docs
