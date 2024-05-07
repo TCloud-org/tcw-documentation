@@ -78,7 +78,11 @@ export const AppSider = () => {
     <Sider
       theme="light"
       width="18rem"
-      style={{ borderRight: `1px solid ${token.colorBorder}` }}
+      style={{
+        borderRight: `1px solid ${token.colorBorder}`,
+        position: "fixed",
+        height: "100%",
+      }}
       className="px-6 pt-4 pb-8"
     >
       <Flex>

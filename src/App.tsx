@@ -5,6 +5,7 @@ import "./App.css";
 import { AppSider } from "./layoutComponents/AppSider";
 import { AppHeader } from "./layoutComponents/AppHeader";
 import { AppFooter } from "./layoutComponents/AppFooter";
+import { HomePage } from "./pages/HomePage";
 
 function App() {
   const Wrapper = () => {
@@ -34,7 +35,7 @@ function App() {
       children: [
         {
           path: "/",
-          element: <div></div>,
+          element: <HomePage />,
         },
       ],
     },

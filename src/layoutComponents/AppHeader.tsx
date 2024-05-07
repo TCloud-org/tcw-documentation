@@ -6,7 +6,7 @@ export const AppHeader = () => {
 
   return (
     <Header
-      className="bg-white h-14"
+      className="bg-white h-14 fixed w-auto top-0 left-72 right-0"
       style={{ borderBottom: `1px solid ${token.colorBorder}` }}
     >
       <div></div>
