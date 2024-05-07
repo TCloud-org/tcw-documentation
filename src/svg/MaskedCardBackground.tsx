@@ -21,12 +21,12 @@ export const MaskedCardBackground = (props: { spanRef?: any }) => {
           <rect
             width="100%"
             height="100%"
-            stroke-width="0"
+            strokeWidth="0"
             fill="url(#:r5r:)"
           ></rect>
           <svg x="50%" y="16" className="overflow-visible">
-            <rect stroke-width="0" width="73" height="57" x="0" y="56"></rect>
-            <rect stroke-width="0" width="73" height="57" x="72" y="168"></rect>
+            <rect strokeWidth="0" width="73" height="57" x="0" y="56"></rect>
+            <rect strokeWidth="0" width="73" height="57" x="72" y="168"></rect>
           </svg>
         </svg>
       </div>
@@ -64,12 +64,12 @@ export const MaskedCardBackground = (props: { spanRef?: any }) => {
           <rect
             width="100%"
             height="100%"
-            stroke-width="0"
+            strokeWidth="0"
             fill="url(#:r5s:)"
           ></rect>
           <svg x="50%" y="16" className="overflow-visible">
-            <rect stroke-width="0" width="73" height="57" x="0" y="56"></rect>
-            <rect stroke-width="0" width="73" height="57" x="72" y="168"></rect>
+            <rect strokeWidth="0" width="73" height="57" x="0" y="56"></rect>
+            <rect strokeWidth="0" width="73" height="57" x="72" y="168"></rect>
           </svg>
         </svg>
       </div>

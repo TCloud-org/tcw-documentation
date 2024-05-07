@@ -11,7 +11,6 @@ export const AppMenu = (props: { items?: MenuItem[] }) => {
   const { items = [] } = props;
 
   const renderChildren = (data: MenuItem[], depth: number) => {
-    console.log(depth, data);
     return data.map((item, i) => (
       <ul key={`${depth}-${i}`}>
         <li className={`relative ${depth === 0 ? "mt-6" : ""}`}>
