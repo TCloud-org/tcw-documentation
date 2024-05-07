@@ -1,26 +1,46 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Layout, theme } from "antd";
+import { Content } from "antd/es/layout/layout";
+import { Outlet, RouterProvider, createBrowserRouter } from "react-router-dom";
+import "./App.css";
+import { AppSider } from "./layoutComponents/AppSider";
+import { AppHeader } from "./layoutComponents/AppHeader";
+import { AppFooter } from "./layoutComponents/AppFooter";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  const Wrapper = () => {
+    const { token } = theme.useToken();
+    return (
+      <Layout>
+        <AppSider />
+        <Layout style={{ minHeight: "100vh" }}>
+          <AppHeader />
+          <Content
+            style={{
+              background: token.colorBgContainer,
+            }}
+          >
+            <Outlet />
+          </Content>
+          <AppFooter />
+        </Layout>
+      </Layout>
+    );
+  };
+
+  const router = createBrowserRouter([
+    {
+      element: <Wrapper />,
+      errorElement: <div></div>,
+      children: [
+        {
+          path: "/",
+          element: <div></div>,
+        },
+      ],
+    },
+  ]);
+
+  return <RouterProvider router={router} />;
 }
 
 export default App;
