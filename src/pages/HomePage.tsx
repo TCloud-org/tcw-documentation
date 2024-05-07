@@ -3,6 +3,7 @@ import { FiAperture, FiSend } from "react-icons/fi";
 import { AppCard, AppCardProps } from "../dataEntryComponents/AppCard";
 import { Container } from "../layoutComponents/Container";
 import { MaskedBackground } from "../svg/ MaskedBackground";
+import { Span } from "../config/layoutConfig";
 
 const applications: AppCardProps[] = [
   {
@@ -43,7 +44,7 @@ export const HomePage = () => {
           >
             {applications.map((application, i) => (
               <Col
-                span={8}
+                {...Span[3]}
                 key={i}
                 style={{
                   display: "flex",
