@@ -1,5 +1,6 @@
-import { Button, Flex, theme } from "antd";
+import { Flex, theme } from "antd";
 import { Header } from "antd/es/layout/layout";
+import { AnchorButton } from "../dataEntryComponents/AnchorButton";
 import { SearchButton } from "../dataEntryComponents/SearchButton";
 
 export const AppHeader = () => {
@@ -15,7 +16,7 @@ export const AppHeader = () => {
       </Flex>
 
       <Flex flex={1} justify="flex-end">
-        <Button type="primary">Sign in</Button>
+        <AnchorButton href="/">Sign in</AnchorButton>
       </Flex>
     </Header>
   );

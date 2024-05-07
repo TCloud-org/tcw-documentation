@@ -5,6 +5,7 @@ import { FiAperture, FiSend } from "react-icons/fi";
 import { Span } from "../config/layoutConfig";
 import { AppCardProps } from "../dataEntryComponents/AppCard";
 import { useState } from "react";
+import { SimpleCard } from "../dataEntryComponents/SimpleCard";
 
 const products: AppCardProps[] = [
   {
@@ -56,7 +57,7 @@ export const ProductsSection = () => {
                   height: "100%",
                 }}
               >
-                <AppCard {...product} style={{ flex: 1 }} />
+                <SimpleCard {...product} />
               </Col>
             ))}
         </Row>
