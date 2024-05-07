@@ -27,17 +27,19 @@ export const AppMenu = (props: { items?: MenuItem[] }) => {
                     transform: "none",
                     transformOrigin: "50% 50% 0px",
                   }}
-                ></div>
-                <div
-                  className="absolute left-2 h-6 w-px"
-                  style={{
-                    backgroundColor: token.colorPrimary,
-                    top: "4px",
-                    opacity: 1,
-                    transform: "none",
-                    transformOrigin: "50% 50% 0px",
-                  }}
-                ></div>
+                />
+                {i === 0 && (
+                  <div
+                    className="absolute left-2 h-6 w-px"
+                    style={{
+                      backgroundColor: token.colorPrimary,
+                      top: "4px",
+                      opacity: 1,
+                      transform: "none",
+                      transformOrigin: "50% 50% 0px",
+                    }}
+                  />
+                )}
                 {renderChildren(item.children || [], depth + 1)}
               </div>
             </>
