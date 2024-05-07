@@ -998,6 +998,16 @@ video {
   padding-right: 1rem;
 }
 
+.py-24 {
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+}
+
+.px-24 {
+  padding-left: 6rem;
+  padding-right: 6rem;
+}
+
 .pb-8 {
   padding-bottom: 2rem;
 }
