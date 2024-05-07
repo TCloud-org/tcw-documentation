@@ -7,6 +7,8 @@ import { AppHeader } from "./layoutComponents/AppHeader";
 import { AppFooter } from "./layoutComponents/AppFooter";
 import { HomePage } from "./pages/HomePage";
 import { NotFoundPage } from "./pages/NotFoundPage";
+import { StepWorkflowPage } from "./pages/StepWorkflowPage";
+import { EmailNotificationWorkflowPage } from "./pages/EmailNotificationWorkflowPage";
 
 function App() {
   const Wrapper = () => {
@@ -37,6 +39,14 @@ function App() {
         {
           path: "/",
           element: <HomePage />,
+        },
+        {
+          path: "/step-workflow",
+          element: <StepWorkflowPage />,
+        },
+        {
+          path: "/email-notification-workflow",
+          element: <EmailNotificationWorkflowPage />,
         },
       ],
     },
