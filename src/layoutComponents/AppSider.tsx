@@ -38,11 +38,11 @@ const menu: MenuItem[] = [
     ],
   },
   {
-    title: "Guides",
+    title: "All Products",
     children: [
       {
-        href: "/",
-        title: "Introduction",
+        href: "/step-workflow",
+        title: "Step Workflow",
         children: [
           {
             href: "/",
@@ -55,8 +55,8 @@ const menu: MenuItem[] = [
         ],
       },
       {
-        href: "/",
-        title: "Introduction",
+        href: "/email-notification-workflow",
+        title: "Email Notification Workflow",
         children: [
           {
             href: "/",

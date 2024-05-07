@@ -45,7 +45,7 @@ export const AppMenu = (props: { items?: MenuItem[] }) => {
           ) : (
             <>
               <a
-                className={`flex justify-between gap-2 py-1 pr-3 text-sm transition ${
+                className={`flex justify-between gap-2 py-2 text-sm transition ${
                   depth < 2 ? "text-zinc-900" : "text-zinc-600"
                 } dark:text-white`}
                 href={item.href}
