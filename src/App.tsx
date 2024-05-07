@@ -6,6 +6,7 @@ import { AppSider } from "./layoutComponents/AppSider";
 import { AppHeader } from "./layoutComponents/AppHeader";
 import { AppFooter } from "./layoutComponents/AppFooter";
 import { HomePage } from "./pages/HomePage";
+import { NotFoundPage } from "./pages/NotFoundPage";
 
 function App() {
   const Wrapper = () => {
@@ -31,7 +32,7 @@ function App() {
   const router = createBrowserRouter([
     {
       element: <Wrapper />,
-      errorElement: <div></div>,
+      errorElement: <NotFoundPage />,
       children: [
         {
           path: "/",

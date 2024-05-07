@@ -1,10 +1,15 @@
-import { ReactNode } from "react";
+import { CSSProperties, ReactNode } from "react";
 
-export const Container = (props: { children?: ReactNode }) => {
+export const Container = (props: {
+  children?: ReactNode;
+  style?: CSSProperties;
+}) => {
   return (
-    <div>
+    <div className="relative">
       <div className="h-14" />
-      <div className="ml-72 px-24">{props.children}</div>
+      <div className="ml-72 px-8" style={props.style}>
+        {props.children}
+      </div>
     </div>
   );
 };

@@ -83,12 +83,12 @@ export const AppSider = () => {
         position: "fixed",
         height: "100%",
       }}
-      className="px-6 pt-4 pb-8"
+      className="px-6 pt-4 pb-8 z-10"
     >
       <Flex>
         <a href="/" className="items-center flex gap-2">
           <AppLogo />
-          <Typography.Text strong>The Cloud World</Typography.Text>
+          <Typography.Text strong>The Cloud Docs</Typography.Text>
         </a>
       </Flex>
 
