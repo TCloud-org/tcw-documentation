@@ -11,9 +11,9 @@ export const AppFooter = () => {
   const { token } = theme.useToken();
   const location = useLocation();
 
-  const { prev, next, prevLabel, nextLabel } = docPagination[
-    location.pathname as keyof typeof docPagination
-  ] as any;
+  const { prev, next, prevLabel, nextLabel } =
+    (docPagination[location.pathname as keyof typeof docPagination] as any) ||
+    {};
 
   return (
     <Footer
