@@ -1,5 +1,6 @@
 import { useLocation } from "react-router-dom";
-import { decodeSectionId } from "../utils/StringUtils";
+import { decodeSectionId, getFirstPath } from "../utils/StringUtils";
+import { theme } from "antd";
 
 export interface MenuItem {
   title?: string;
@@ -11,6 +12,15 @@ export const AppMenu = (props: { items?: MenuItem[] }) => {
   const location = useLocation();
   const hash = location.hash.slice(1);
   const { items = [] } = props;
+  const { token } = theme.useToken();
+
+  const shouldEmphasize = (item: MenuItem, index: number, depth: number) => {
+    const firstPath = getFirstPath(location.pathname);
+    if (!firstPath && depth === 1 && index === 0) {
+      return true;
+    }
+    return firstPath.toLowerCase() === item.title?.toLowerCase();
+  };
 
   const renderChildren = (data: MenuItem[], depth: number) => {
     return data.map((item, i) => (
@@ -44,6 +54,17 @@ export const AppMenu = (props: { items?: MenuItem[] }) => {
               >
                 <span className="truncate">{item.title}</span>
               </a>
+              {shouldEmphasize(item, i, depth) && (
+                <div
+                  className="absolute left-0 h-7 top-1 w-px"
+                  style={{
+                    backgroundColor: token.colorPrimary,
+                    opacity: 1,
+                    transform: "none",
+                    transformOrigin: "50% 50% 0px",
+                  }}
+                />
+              )}
               {item.title?.toLowerCase() === decodeSectionId(hash) && (
                 <div
                   className="absolute top-1 right-6 bottom-1 bg-slate-500/5 z-0 rounded-md"
