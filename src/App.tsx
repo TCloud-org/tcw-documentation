@@ -10,7 +10,7 @@ import { NotFoundPage } from "./pages/NotFoundPage";
 import { StepWorkflowPage } from "./pages/StepWorkflow/StepWorkflowPage";
 import { EmailNotificationWorkflowPage } from "./pages/EmailNotificationWorkflowPage";
 import { Container } from "./layoutComponents/Container";
-import { StepWorkflowSetupPage } from "./pages/StepWorkflow/StepWorkflowSetupPage";
+import { StepWorkflowQuickstartPage } from "./pages/StepWorkflow/StepWorkflowQuickstartPage";
 
 function App() {
   const Wrapper = () => {
@@ -49,8 +49,8 @@ function App() {
           element: <StepWorkflowPage />,
         },
         {
-          path: "/step-workflow/setup",
-          element: <StepWorkflowSetupPage />,
+          path: "/step-workflow/quickstart",
+          element: <StepWorkflowQuickstartPage />,
         },
         {
           path: "/email-notification-workflow",

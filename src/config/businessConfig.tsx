@@ -40,10 +40,10 @@ export const mainMenuItems: MenuItem[] = [
 
 export const docPagination = {
   "/step-workflow": {
-    next: "/step-workflow/setup",
-    nextLabel: "Setup",
+    next: "/step-workflow/quickstart",
+    nextLabel: "Quickstart",
   },
-  "/step-workflow/setup": {
+  "/step-workflow/quickstart": {
     prev: "/step-workflow",
     prevLabel: "Introduction",
   },
@@ -68,11 +68,11 @@ const stepWorkflowMenuItems: MenuItem[] = [
         ],
       },
       {
-        href: "/step-workflow/setup",
-        title: "Setup",
+        href: "/step-workflow/quickstart",
+        title: "Quickstart",
         children: [
           {
-            href: "/step-workflow/setup#set-up-a-client",
+            href: "/step-workflow/quickstart#set-up-a-client",
             title: "Set up a client",
           },
         ],

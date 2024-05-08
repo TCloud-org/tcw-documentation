@@ -50,14 +50,17 @@ const steps = [
     ),
   },
 ];
-export const StepWorkflowSetupPage = () => {
+export const StepWorkflowQuickstartPage = () => {
   return (
     <DocContainer>
-      <HeadingLink>Setup</HeadingLink>
+      <HeadingLink>Quickstart</HeadingLink>
 
-      <Typography.Paragraph>
-        This guide will get you set up with your first client. We will get
-        started on how to create a new client in the TCW console.
+      <Typography.Paragraph className="text-base">
+        This guide will get you all set up and ready to use the Step Workflow
+        API. We'll cover how to get all the infrastructures set up and how to
+        make your first API request. We'll also look at where to go next to find
+        all the information you need to take full advantage of our powerful REST
+        API.
       </Typography.Paragraph>
 
       <HeadingLink level={2}>Set up a client</HeadingLink>
