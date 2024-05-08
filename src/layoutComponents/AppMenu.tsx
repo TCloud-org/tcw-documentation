@@ -8,6 +8,10 @@ export interface MenuItem {
   href?: string;
 }
 
+const whitelist = {
+  "/step-workflow": "introduction",
+};
+
 export const AppMenu = (props: { items?: MenuItem[] }) => {
   const location = useLocation();
   const hash = location.hash.slice(1);
@@ -16,7 +20,16 @@ export const AppMenu = (props: { items?: MenuItem[] }) => {
 
   const shouldEmphasize = (item: MenuItem, index: number, depth: number) => {
     const firstPath = getFirstPath(location.pathname);
-    return firstPath.toLowerCase() === item.title?.toLowerCase();
+    if (firstPath.toLowerCase() === item.title?.toLowerCase()) {
+      return true;
+    }
+    if (location.pathname in whitelist) {
+      return (
+        whitelist[location.pathname as keyof typeof whitelist].toLowerCase() ===
+        item.title?.toLowerCase()
+      );
+    }
+    return false;
   };
 
   const renderChildren = (data: MenuItem[], depth: number) => {

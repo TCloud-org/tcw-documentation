@@ -5,25 +5,6 @@ export const primaryColor = "#4312e5";
 
 export const mainMenuItems: MenuItem[] = [
   {
-    title: "Guides",
-    children: [
-      {
-        href: "/",
-        title: "Introduction",
-        children: [
-          {
-            href: "/",
-            title: "Guides",
-          },
-          {
-            href: "/",
-            title: "Resources",
-          },
-        ],
-      },
-    ],
-  },
-  {
     title: "All Products",
     children: [
       {
