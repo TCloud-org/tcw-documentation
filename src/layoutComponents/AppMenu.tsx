@@ -1,4 +1,5 @@
-import { theme } from "antd";
+import { useLocation } from "react-router-dom";
+import { decodeSectionId } from "../utils/StringUtils";
 
 export interface MenuItem {
   title?: string;
@@ -7,7 +8,8 @@ export interface MenuItem {
 }
 
 export const AppMenu = (props: { items?: MenuItem[] }) => {
-  const { token } = theme.useToken();
+  const location = useLocation();
+  const hash = location.hash.slice(1);
   const { items = [] } = props;
 
   const renderChildren = (data: MenuItem[], depth: number) => {
@@ -27,25 +29,13 @@ export const AppMenu = (props: { items?: MenuItem[] }) => {
                     transformOrigin: "50% 50% 0px",
                   }}
                 />
-                {i === 0 && (
-                  <div
-                    className="absolute left-2 h-6 w-px"
-                    style={{
-                      backgroundColor: token.colorPrimary,
-                      top: "4px",
-                      opacity: 1,
-                      transform: "none",
-                      transformOrigin: "50% 50% 0px",
-                    }}
-                  />
-                )}
                 {renderChildren(item.children || [], depth + 1)}
               </div>
             </>
           ) : (
             <>
               <a
-                className={`flex justify-between gap-2 py-2 text-sm transition ${
+                className={`relative z-10 flex hover:text-slate-950/50 justify-between gap-2 py-2 text-sm transition ${
                   depth < 2 ? "text-zinc-900" : "text-zinc-600"
                 } dark:text-white`}
                 href={item.href}
@@ -54,6 +44,14 @@ export const AppMenu = (props: { items?: MenuItem[] }) => {
               >
                 <span className="truncate">{item.title}</span>
               </a>
+              {item.title?.toLowerCase() === decodeSectionId(hash) && (
+                <div
+                  className="absolute top-1 right-6 bottom-1 bg-slate-500/5 z-0 rounded-md"
+                  style={{
+                    left: "-0.5rem",
+                  }}
+                />
+              )}
               {renderChildren(item.children || [], depth + 1)}
             </>
           )}

@@ -16,7 +16,9 @@ export const AppHeader = () => {
       </Flex>
 
       <Flex flex={1} justify="flex-end">
-        <AnchorButton href="/">Sign in</AnchorButton>
+        <AnchorButton href="https://www.tc-workflow.com" target="_blank">
+          Sign in
+        </AnchorButton>
       </Flex>
     </Header>
   );

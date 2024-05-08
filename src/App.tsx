@@ -7,8 +7,10 @@ import { AppHeader } from "./layoutComponents/AppHeader";
 import { AppFooter } from "./layoutComponents/AppFooter";
 import { HomePage } from "./pages/HomePage";
 import { NotFoundPage } from "./pages/NotFoundPage";
-import { StepWorkflowPage } from "./pages/StepWorkflowPage";
+import { StepWorkflowPage } from "./pages/StepWorkflow/StepWorkflowPage";
 import { EmailNotificationWorkflowPage } from "./pages/EmailNotificationWorkflowPage";
+import { Container } from "./layoutComponents/Container";
+import { StepWorkflowSetupPage } from "./pages/StepWorkflow/StepWorkflowSetupPage";
 
 function App() {
   const Wrapper = () => {
@@ -23,7 +25,9 @@ function App() {
               background: token.colorBgContainer,
             }}
           >
-            <Outlet />
+            <Container>
+              <Outlet />
+            </Container>
           </Content>
           <AppFooter />
         </Layout>
@@ -43,6 +47,10 @@ function App() {
         {
           path: "/step-workflow",
           element: <StepWorkflowPage />,
+        },
+        {
+          path: "/step-workflow/setup",
+          element: <StepWorkflowSetupPage />,
         },
         {
           path: "/email-notification-workflow",

@@ -5,11 +5,15 @@ export const Container = (props: {
   style?: CSSProperties;
 }) => {
   return (
-    <div className="relative">
-      <div className="h-14" />
-      <div className="ml-72 px-8" style={props.style}>
-        {props.children}
-      </div>
+    <div
+      className="relative flex h-full flex-col px-4 pt-14 sm:px-6 lg:px-8"
+      style={props.style}
+    >
+      <main className="flex-auto">
+        <article className="flex h-full flex-col pb-10">
+          <div className="flex-auto ml-72">{props.children}</div>
+        </article>
+      </main>
     </div>
   );
 };

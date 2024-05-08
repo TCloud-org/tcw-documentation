@@ -1,11 +1,10 @@
 import { Flex, Typography } from "antd";
 import { ProductsSection } from "../homeComponents/ProductsSection";
-import { Container } from "../layoutComponents/Container";
 import { MaskedBackground } from "../svg/ MaskedBackground";
 
 export const HomePage = () => {
   return (
-    <Container>
+    <div>
       <MaskedBackground />
       <Flex vertical className="z-10">
         <Flex vertical className="py-16">
@@ -22,6 +21,6 @@ export const HomePage = () => {
 
         <ProductsSection />
       </Flex>
-    </Container>
+    </div>
   );
 };

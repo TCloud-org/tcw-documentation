@@ -1,78 +1,13 @@
 import { Flex, Typography, theme } from "antd";
 import Sider from "antd/es/layout/Sider";
+import { useLocation } from "react-router-dom";
+import { getSiderItems } from "../config/businessConfig";
 import { AppLogo } from "../dataDisplayComponents/AppLogo";
-import { AppMenu, MenuItem } from "./AppMenu";
+import { AppMenu } from "./AppMenu";
 
-const menu: MenuItem[] = [
-  {
-    title: "Guides",
-    children: [
-      {
-        href: "/",
-        title: "Introduction",
-        children: [
-          {
-            href: "/",
-            title: "Guides",
-          },
-          {
-            href: "/",
-            title: "Resources",
-          },
-        ],
-      },
-      {
-        href: "/",
-        title: "Introduction",
-        children: [
-          {
-            href: "/",
-            title: "Guides",
-          },
-          {
-            href: "/",
-            title: "Resources",
-          },
-        ],
-      },
-    ],
-  },
-  {
-    title: "All Products",
-    children: [
-      {
-        href: "/step-workflow",
-        title: "Step Workflow",
-        children: [
-          {
-            href: "/",
-            title: "Guides",
-          },
-          {
-            href: "/",
-            title: "Resources",
-          },
-        ],
-      },
-      {
-        href: "/email-notification-workflow",
-        title: "Email Notification Workflow",
-        children: [
-          {
-            href: "/",
-            title: "Guides",
-          },
-          {
-            href: "/",
-            title: "Resources",
-          },
-        ],
-      },
-    ],
-  },
-];
 export const AppSider = () => {
   const { token } = theme.useToken();
+  const location = useLocation();
 
   return (
     <Sider
@@ -93,7 +28,7 @@ export const AppSider = () => {
       </Flex>
 
       <nav className="hidden lg:mt-10 lg:block">
-        <AppMenu items={menu} />
+        <AppMenu items={getSiderItems(location.pathname)} />
       </nav>
     </Sider>
   );

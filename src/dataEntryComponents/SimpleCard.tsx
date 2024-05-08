@@ -1,6 +1,6 @@
+import { motion } from "framer-motion";
 import { CSSProperties, useEffect, useRef } from "react";
 import { IconType } from "react-icons";
-import { motion } from "framer-motion";
 
 export interface SimpleCardProps {
   title?: string;
@@ -40,16 +40,19 @@ export const SimpleCard = (props: SimpleCardProps) => {
       );
     };
 
-    btnRef?.current?.addEventListener("mousemove", handleMouseMove);
+    const buttonRef = btnRef.current;
+
+    buttonRef?.addEventListener("mousemove", handleMouseMove);
 
     return () => {
-      btnRef?.current?.removeEventListener("mousemove", handleMouseMove);
+      buttonRef?.removeEventListener("mousemove", handleMouseMove);
     };
   }, []);
 
   return (
     <motion.div
       ref={btnRef}
+      style={{ flex: 1 }}
       className="group relative w-full flex rounded-2xl bg-zinc-50 transition-shadow hover:shadow-md hover:shadow-zinc-900/5 dark:bg-white/2.5 dark:hover:shadow-black/5"
     >
       <div className="pointer-events-none">
@@ -73,13 +76,13 @@ export const SimpleCard = (props: SimpleCardProps) => {
             <rect
               width="100%"
               height="100%"
-              stroke-width="0"
+              strokeWidth="0"
               fill="url(#:r2q:)"
             ></rect>
             <svg x="50%" y="16" className="overflow-visible">
-              <rect stroke-width="0" width="73" height="57" x="0" y="56"></rect>
+              <rect strokeWidth="0" width="73" height="57" x="0" y="56"></rect>
               <rect
-                stroke-width="0"
+                strokeWidth="0"
                 width="73"
                 height="57"
                 x="72"
@@ -91,18 +94,10 @@ export const SimpleCard = (props: SimpleCardProps) => {
         <div
           ref={radialRef}
           className="absolute inset-0 rounded-2xl bg-gradient-to-r from-[#ede9ff] to-[#ede9ff] opacity-0 transition duration-300 group-hover:opacity-100 dark:from-[#202D2E] dark:to-[#303428]"
-          style={{
-            maskImage:
-              "radial-gradient(180px at 518px 4.5px, white, transparent)",
-          }}
         />
         <div
           ref={textureRef}
           className="absolute inset-0 rounded-2xl opacity-0 mix-blend-overlay transition duration-300 group-hover:opacity-100"
-          style={{
-            maskImage:
-              "radial-gradient(180px at 518px 4.5px, white, transparent)",
-          }}
         >
           <svg
             aria-hidden="true"
@@ -123,13 +118,13 @@ export const SimpleCard = (props: SimpleCardProps) => {
             <rect
               width="100%"
               height="100%"
-              stroke-width="0"
+              strokeWidth="0"
               fill="url(#:r2r:)"
             ></rect>
             <svg x="50%" y="16" className="overflow-visible">
-              <rect stroke-width="0" width="73" height="57" x="0" y="56"></rect>
+              <rect strokeWidth="0" width="73" height="57" x="0" y="56"></rect>
               <rect
-                stroke-width="0"
+                strokeWidth="0"
                 width="73"
                 height="57"
                 x="72"
@@ -140,7 +135,7 @@ export const SimpleCard = (props: SimpleCardProps) => {
         </div>
       </div>
       <div className="absolute inset-0 rounded-2xl ring-1 ring-inset ring-zinc-900/7.5 group-hover:ring-zinc-900/10 dark:ring-white/10 dark:group-hover:ring-white/20"></div>
-      <div className="relative rounded-2xl px-4 pb-4 pt-16">
+      <div className="relative rounded-2xl px-4 pb-4 pt-16 w-full">
         <div className="flex h-7 w-7 items-center justify-center rounded-full bg-zinc-900/5 ring-1 ring-zinc-900/25 backdrop-blur-[2px] transition duration-300 group-hover:bg-white/50 group-hover:ring-zinc-900/25 dark:bg-white/7.5 dark:ring-white/15 dark:group-hover:bg-emerald-300/10 dark:group-hover:ring-emerald-400">
           <Icon />
         </div>
@@ -150,7 +145,7 @@ export const SimpleCard = (props: SimpleCardProps) => {
             {props.title}
           </a>
         </h3>
-        <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">
+        <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400 break-words break-all">
           {props.subtitle}
         </p>
       </div>

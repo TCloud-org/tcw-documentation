@@ -1,10 +1,9 @@
 import { AutoComplete, Col, Flex, Row, Typography } from "antd";
-import { AppCard } from "../dataEntryComponents/AppCard";
 
+import { useState } from "react";
 import { FiAperture, FiSend } from "react-icons/fi";
 import { Span } from "../config/layoutConfig";
 import { AppCardProps } from "../dataEntryComponents/AppCard";
-import { useState } from "react";
 import { SimpleCard } from "../dataEntryComponents/SimpleCard";
 
 const products: AppCardProps[] = [
@@ -42,26 +41,24 @@ export const ProductsSection = () => {
         }
         onClear={() => setQuery("")}
       />
-      <Flex>
-        <Row gutter={[32, 32]} style={{ width: "100%" }}>
-          {products
-            .filter((product) =>
-              product.title?.toLowerCase().includes(query.toLowerCase())
-            )
-            .map((product, i) => (
-              <Col
-                {...Span[3]}
-                key={i}
-                style={{
-                  display: "flex",
-                  height: "100%",
-                }}
-              >
-                <SimpleCard {...product} />
-              </Col>
-            ))}
-        </Row>
-      </Flex>
+      <Row gutter={[32, 32]} style={{ width: "100%" }}>
+        {products
+          .filter((product) =>
+            product.title?.toLowerCase().includes(query.toLowerCase())
+          )
+          .map((product, i) => (
+            <Col
+              {...Span[2]}
+              key={i}
+              style={{
+                display: "flex",
+                flexDirection: "column",
+              }}
+            >
+              <SimpleCard {...product} />
+            </Col>
+          ))}
+      </Row>
     </Flex>
   );
 };
