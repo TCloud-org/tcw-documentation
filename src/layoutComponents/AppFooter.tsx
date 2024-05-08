@@ -1,10 +1,11 @@
+import { FacebookFilled, LinkedinFilled } from "@ant-design/icons";
 import { Divider, Flex, Typography, theme } from "antd";
 import { Footer } from "antd/es/layout/layout";
+import { useLocation } from "react-router-dom";
+import { docPagination } from "../config/businessConfig";
 import { AppLogo } from "../dataDisplayComponents/AppLogo";
 import { NextButton } from "../dataEntryComponents/NextButton";
 import { PreviousButton } from "../dataEntryComponents/PreviousButton";
-import { useLocation } from "react-router-dom";
-import { docPagination } from "../config/businessConfig";
 
 export const AppFooter = () => {
   const { token } = theme.useToken();
@@ -17,7 +18,7 @@ export const AppFooter = () => {
   return (
     <Footer
       style={{ textAlign: "center", background: token.colorBgContainer }}
-      className="ml-72"
+      className="ml-72 pb-16"
     >
       <Flex align="center" justify="space-between">
         <Flex flex={1} justify="flex-start">
@@ -52,11 +53,32 @@ export const AppFooter = () => {
         </Flex>
       </Flex>
       <Divider />
-      <Flex align="center" gap={8} justify="center">
-        <AppLogo />
-        <Typography.Text strong>
-          The Cloud Docs ©{new Date().getFullYear()}
-        </Typography.Text>
+      <Flex align="center" justify="space-between">
+        <Flex align="center" gap={8} justify="center">
+          <AppLogo />
+          <Typography.Text>
+            The Cloud Docs ©{new Date().getFullYear()}. All rights reserved.
+          </Typography.Text>
+        </Flex>
+
+        <Flex align="center" className="gap-4">
+          <a
+            className="hover:text-black text-lg"
+            href="https://www.facebook.com/profile.php?id=61558007322573"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <FacebookFilled />
+          </a>
+          <a
+            className="hover:text-black text-lg"
+            href="https://www.linkedin.com/company/101706949"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <LinkedinFilled />
+          </a>
+        </Flex>
       </Flex>
     </Footer>
   );
