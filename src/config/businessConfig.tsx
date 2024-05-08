@@ -38,6 +38,17 @@ export const mainMenuItems: MenuItem[] = [
   },
 ];
 
+export const docPagination = {
+  "/step-workflow": {
+    next: "/step-workflow/setup",
+    nextLabel: "Setup",
+  },
+  "/step-workflow/setup": {
+    prev: "/step-workflow",
+    prevLabel: "Introduction",
+  },
+};
+
 const stepWorkflowMenuItems: MenuItem[] = [
   {
     title: "Getting Started",

@@ -25,12 +25,8 @@ code {
     monospace;
 }
 
-.heading-link>[id]::before {
-  content   : '';
-  display   : block;
-  height    : 64px;
-  margin-top: -64px;
-  visibility: hidden;
+html {
+  scroll-padding-top: 4rem;
 }
 
 .bg {

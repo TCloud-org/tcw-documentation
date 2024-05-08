@@ -24,23 +24,25 @@ export const HeadingLink = (props: {
   const id = encodeSectionId(children);
 
   return (
-    <Typography.Title className="heading-link" level={level}>
-      <a
-        id={id}
-        href={`#${id}`}
-        style={{ color: "black" }}
-        onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}
-      >
-        {children}
-        <LinkOutlined
-          style={{
-            marginLeft: "0.5rem",
-            opacity: isHovered ? 1 : 0,
-            transition: "opacity 0.3s ease-in-out",
-          }}
-        />
-      </a>
-    </Typography.Title>
+    <>
+      <Typography.Title level={level}>
+        <a
+          id={id}
+          href={`#${id}`}
+          style={{ color: "black" }}
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
+        >
+          {children}
+          <LinkOutlined
+            style={{
+              marginLeft: "0.5rem",
+              opacity: isHovered ? 1 : 0,
+              transition: "opacity 0.3s ease-in-out",
+            }}
+          />
+        </a>
+      </Typography.Title>
+    </>
   );
 };
