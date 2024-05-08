@@ -6,7 +6,7 @@ import { DocContainer } from "../../layoutComponents/DocContainer";
 const topics = [
   {
     label: "Set up a client (e.g., organization, team, etc.)",
-    href: "/step-workflow/setup#set-up-a-client",
+    href: "/step-workflow/quickstart#set-up-a-client",
   },
   {
     label: "Create a workflow",
