@@ -1,16 +1,15 @@
 import { Flex, Typography } from "antd";
-import { HelpWord } from "../dataDisplayComponents/HelpWord";
 import { NumberedListItem } from "../dataDisplayComponents/NumberedListItem";
 import { ExternalLink } from "../dataEntryComponents/ExternalLink";
-import { AddGraphExample } from "./AddGraphExample";
+import { ConfigureEndpointExample } from "./ConfigureEndpointExample";
 
 const steps = [
   {
     children: (
       <Typography.Paragraph>
         Go to{" "}
-        <ExternalLink href="https://www.tc-workflow.com/graph/create">
-          Add Graph
+        <ExternalLink href="https://www.tc-workflow.com/service/add">
+          Add Service
         </ExternalLink>{" "}
         page.
       </Typography.Paragraph>
@@ -19,49 +18,36 @@ const steps = [
   {
     children: (
       <Typography.Paragraph>
-        Select a client (e.g., AccountManagementClient)
+        Enter your service name (e.g., WorkflowOrchestratorService). This is
+        utilized to link the service specified in the workflow to your API
+        endpoint.
       </Typography.Paragraph>
     ),
   },
   {
     children: (
       <Typography.Paragraph>
-        Select a workflow (e.g., CreateAccountWorkflow)
+        Enter your service endpoint (e.g., https://api.example.com/v1)
       </Typography.Paragraph>
     ),
   },
   {
     children: (
       <Typography.Paragraph>
-        Enter an{" "}
-        <HelpWord tooltip="An alias is a human-readable reference to a specific version of an object (e.g., graph, workflow, service endpoint, etc.)">
-          alias
-        </HelpWord>{" "}
-        (e.g., live). If this field is left empty, a unique identifier will be
-        assigned.
+        Select your environment either Production or Development.
       </Typography.Paragraph>
     ),
   },
   {
     children: (
       <Typography.Paragraph>
-        (Optional) Enter a description. Although description is optional,
-        providing a description can enhance comprehension by offering insight
-        into the rationale behind creating this graph (e.g., adding a
-        verification state before seeding an account).
-      </Typography.Paragraph>
-    ),
-  },
-  {
-    children: (
-      <Typography.Paragraph>
-        Compose your workflow graph in XML format.
+        Enter an alias. Enter 'live' if you intend to use the current version.
       </Typography.Paragraph>
     ),
   },
 ];
 
-export const AddGraphStep = () => {
+export const ConfigureEndpoint = () => {
   return (
     <Typography.Paragraph>
       <Typography.Paragraph>
@@ -76,7 +62,7 @@ export const AddGraphStep = () => {
         <Flex vertical gap={16}>
           <Typography.Text>Example:</Typography.Text>
 
-          <AddGraphExample />
+          <ConfigureEndpointExample />
         </Flex>
       </Typography.Paragraph>
     </Typography.Paragraph>

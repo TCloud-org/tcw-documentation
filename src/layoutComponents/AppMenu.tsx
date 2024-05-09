@@ -77,7 +77,7 @@ export const AppMenu = (props: { items?: MenuItem[] }) => {
               )}
               {item.title?.toLowerCase() === decodeSectionId(hash) && (
                 <div
-                  className="absolute top-1 right-6 h-7 bg-slate-500/5 z-0 rounded-md"
+                  className="absolute top-1 right-0 h-7 bg-slate-500/5 z-0 rounded-md"
                   style={{
                     left: "-0.5rem",
                   }}

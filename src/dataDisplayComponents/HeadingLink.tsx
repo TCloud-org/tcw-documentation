@@ -25,7 +25,7 @@ export const HeadingLink = (props: {
 
   return (
     <>
-      <Typography.Title level={level}>
+      <Typography.Title level={level} style={{ marginBottom: 32 }}>
         <a
           id={id}
           href={`#${id}`}

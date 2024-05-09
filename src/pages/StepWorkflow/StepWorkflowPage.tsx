@@ -18,7 +18,7 @@ const topics = [
   },
   {
     label: "Configure user API endpoint",
-    href: "/",
+    href: "/step-workflow/quickstart#configure-user-api-endpoint",
   },
   {
     label: "Set up authentication for your API endpoint",

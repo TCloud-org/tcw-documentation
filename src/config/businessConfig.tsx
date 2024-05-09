@@ -64,6 +64,10 @@ const stepWorkflowMenuItems: MenuItem[] = [
             href: "/step-workflow/quickstart#add-a-graph",
             title: "Add a graph",
           },
+          {
+            href: "/step-workflow/quickstart#configure-user-api-endpoint",
+            title: "Configure user API endpoint",
+          },
         ],
       },
     ],

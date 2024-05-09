@@ -48,7 +48,7 @@ const steps = [
 ];
 export const CreateWorkflowStep = () => {
   return (
-    <>
+    <Typography.Paragraph>
       <Typography.Paragraph>
         {steps.map((step, i) => (
           <NumberedListItem key={i} index={i + 1}>
@@ -64,6 +64,6 @@ export const CreateWorkflowStep = () => {
           <CreateWorkflowExample />
         </Flex>
       </Typography.Paragraph>
-    </>
+    </Typography.Paragraph>
   );
 };

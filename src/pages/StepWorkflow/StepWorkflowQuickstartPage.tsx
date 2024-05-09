@@ -6,6 +6,7 @@ import { DocContainer } from "../../layoutComponents/DocContainer";
 import { AddClientExample } from "../../stepWorkflowComponents/AddClientExample";
 import { AddGraphStep } from "../../stepWorkflowComponents/AddGraphStep";
 import { CreateWorkflowStep } from "../../stepWorkflowComponents/CreateWorkflowStep";
+import { ConfigureEndpoint } from "../../stepWorkflowComponents/ConfigureEndpoint";
 
 const steps = [
   {
@@ -97,6 +98,10 @@ export const StepWorkflowQuickstartPage = () => {
       <HeadingLink level={2}>Add a graph</HeadingLink>
 
       <AddGraphStep />
+
+      <HeadingLink level={2}>Configure user API endpoint</HeadingLink>
+
+      <ConfigureEndpoint />
     </DocContainer>
   );
 };
