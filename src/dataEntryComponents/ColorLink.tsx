@@ -1,5 +1,4 @@
 import { ReactNode } from "react";
-import { primaryColor } from "../config/businessConfig";
 
 export const ColorLink = (props: {
   href?: string;
