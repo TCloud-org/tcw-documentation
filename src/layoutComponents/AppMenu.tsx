@@ -20,7 +20,9 @@ export const AppMenu = (props: { items?: MenuItem[] }) => {
 
   const shouldEmphasize = (item: MenuItem, index: number, depth: number) => {
     const firstPath = getFirstPath(location.pathname);
-    if (firstPath.toLowerCase() === item.title?.toLowerCase()) {
+    if (
+      decodeSectionId(firstPath).toLowerCase() === item.title?.toLowerCase()
+    ) {
       return true;
     }
     if (location.pathname in whitelist) {

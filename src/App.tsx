@@ -11,6 +11,7 @@ import { StepWorkflowPage } from "./pages/StepWorkflow/StepWorkflowPage";
 import { EmailNotificationWorkflowPage } from "./pages/EmailNotificationWorkflowPage";
 import { Container } from "./layoutComponents/Container";
 import { StepWorkflowQuickstartPage } from "./pages/StepWorkflow/StepWorkflowQuickstartPage";
+import { StepWorkflowApiReferencePage } from "./pages/StepWorkflow/StepWorkflowApiReferencePage";
 
 function App() {
   const Wrapper = () => {
@@ -51,6 +52,10 @@ function App() {
         {
           path: "/step-workflow/quickstart",
           element: <StepWorkflowQuickstartPage />,
+        },
+        {
+          path: "/step-workflow/api-reference",
+          element: <StepWorkflowApiReferencePage />,
         },
         {
           path: "/email-notification-workflow",

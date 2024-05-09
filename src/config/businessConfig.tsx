@@ -86,6 +86,10 @@ const stepWorkflowMenuItems: MenuItem[] = [
           },
         ],
       },
+      {
+        href: "/step-workflow/api-reference",
+        title: "API Reference",
+      },
     ],
   },
 ];
