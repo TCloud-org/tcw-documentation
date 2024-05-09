@@ -91,7 +91,17 @@ export const AddGraphStep = () => {
               Version: 1,
             }}
           >
-            <CodeBeam language="xml" value={graphXml} label="Graph" />
+            <CodeBeam
+              value="xml"
+              snippets={[
+                {
+                  key: "xml",
+                  label: "Graph",
+                  language: "xml",
+                  value: graphXml,
+                },
+              ]}
+            />
           </QuickstartExample>
         </Flex>
       </Typography.Paragraph>

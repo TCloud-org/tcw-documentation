@@ -28,6 +28,10 @@ const topics = [
     label: "Create a new retry policy",
     href: "/step-workflow/quickstart#add-a-retry-policy",
   },
+  {
+    label: "Initiate a workflow",
+    href: "/step-workflow/quickstart#initiate-a-workflow",
+  },
 ];
 
 export const StepWorkflowPage = () => {

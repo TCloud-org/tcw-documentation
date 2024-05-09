@@ -77,6 +77,10 @@ const stepWorkflowMenuItems: MenuItem[] = [
             title: "Add a retry policy",
           },
           {
+            href: "/step-workflow/quickstart#initiate-a-workflow",
+            title: "Initiate a workflow",
+          },
+          {
             href: "/step-workflow/quickstart#whats-next",
             title: "What's next?",
           },

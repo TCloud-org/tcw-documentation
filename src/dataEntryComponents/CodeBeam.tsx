@@ -3,17 +3,44 @@ import ReactSyntaxHighlighter from "react-syntax-highlighter";
 import { atomOneDark } from "react-syntax-highlighter/dist/esm/styles/hljs";
 import { AppCopy } from "./AppCopy";
 import { CodeSegmented } from "./CodeSegmented";
+import { useState } from "react";
 
 export const textColor = "#f8fafc";
 const borderColor = "#222c3f";
 
+export type Language =
+  | "java"
+  | "javascript"
+  | "python"
+  | "xml"
+  | "gradle"
+  | "groovy";
+
+export interface Snippet {
+  key: string;
+  label: string;
+  value: string;
+  language: Language;
+}
+
 export const CodeBeam = (props: {
+  snippets?: Snippet[];
   value?: string;
-  language: "java" | "javascript" | "python" | "xml";
-  display3dots?: boolean;
+  showDots?: boolean;
   label?: string;
+  onChange?: (value: string) => void;
 }) => {
-  const { value = "", language = "xml", display3dots, label } = props;
+  const {
+    value = "",
+    showDots,
+    label,
+    snippets = [],
+    onChange = () => {},
+  } = props;
+
+  const [select, setSelect] = useState<string>(value);
+
+  const code = snippets.find((snippet) => snippet.key === select)?.value;
 
   return (
     <div
@@ -25,7 +52,7 @@ export const CodeBeam = (props: {
         style={{ borderBottom: `1px solid ${borderColor}` }}
       >
         <Flex align="center" gap={16}>
-          {display3dots && (
+          {showDots && (
             <div className="flex space-x-2">
               <div className="w-3 h-3 rounded-full bg-red-500"></div>
               <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
@@ -36,20 +63,23 @@ export const CodeBeam = (props: {
           {label && <div style={{ color: textColor }}>{label}</div>}
 
           <CodeSegmented
-            value="xml"
-            options={[
-              {
-                label: "XML",
-                value: "xml",
-              },
-            ]}
+            value={select}
+            options={snippets.map((snippet) => ({
+              label: snippet.label,
+              value: snippet.key,
+            }))}
+            onChange={(e) => {
+              setSelect(e);
+              onChange(e);
+            }}
           />
         </Flex>
 
-        <AppCopy value={value} />
+        <AppCopy value={code} />
       </div>
+
       <ReactSyntaxHighlighter
-        language={language}
+        language={snippets.find((snippet) => snippet.key === select)?.language}
         style={atomOneDark}
         customStyle={{
           padding: "27px",
@@ -59,7 +89,7 @@ export const CodeBeam = (props: {
           color: textColor,
         }}
       >
-        {`${value}`}
+        {`${code}`}
       </ReactSyntaxHighlighter>
     </div>
   );

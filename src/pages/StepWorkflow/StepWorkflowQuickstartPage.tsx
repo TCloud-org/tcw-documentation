@@ -10,6 +10,7 @@ import { CreatePolicyStep } from "../../stepWorkflowComponents/CreatePolicyStep"
 import { CreateWorkflowStep } from "../../stepWorkflowComponents/CreateWorkflowStep";
 import { QuickstartExample } from "../../stepWorkflowComponents/QuickstartExample";
 import { QuickstartNext } from "../../stepWorkflowComponents/QuickstartNext";
+import { InitiateWorkflowStep } from "../../stepWorkflowComponents/InitiateWorkflowStep";
 
 const steps = [
   {
@@ -117,6 +118,10 @@ export const StepWorkflowQuickstartPage = () => {
       <HeadingLink level={3}>Add a retry policy</HeadingLink>
 
       <CreatePolicyStep />
+
+      <HeadingLink level={3}>Initiate a workflow</HeadingLink>
+
+      <InitiateWorkflowStep />
 
       <HeadingLink level={3}>What's next?</HeadingLink>
 
