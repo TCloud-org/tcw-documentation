@@ -1,6 +1,8 @@
-import { Flex, Form } from "antd";
+import { Flex, Form, Typography } from "antd";
 import { ReactNode, useEffect } from "react";
 import { DisplayInput } from "../dataDisplayComponents/DisplayInput";
+import { ScreenContainer } from "../layoutComponents/ScreenContainer";
+import { textColor } from "../dataEntryComponents/CodeBeam";
 
 export const formItemLayout = {
   labelCol: {
@@ -25,21 +27,31 @@ export const QuickstartExample = (props: {
   }, [form, data]);
 
   return (
-    <Flex vertical>
-      <Form
-        form={form}
-        {...formItemLayout}
-        labelAlign="left"
-        size="small"
-        colon={false}
-      >
-        {Object.keys(data).map((k, i) => (
-          <Form.Item label={k} name={k} key={i}>
-            <DisplayInput />
-          </Form.Item>
-        ))}
-      </Form>
-      {props.children}
-    </Flex>
+    <ScreenContainer showDots label="Form">
+      <Flex vertical className="px-6 pt-6">
+        <Form
+          form={form}
+          {...formItemLayout}
+          labelAlign="left"
+          size="small"
+          colon={false}
+        >
+          {Object.keys(data).map((k, i) => (
+            <Form.Item
+              label={
+                <Typography.Text style={{ color: textColor }}>
+                  {k}
+                </Typography.Text>
+              }
+              name={k}
+              key={i}
+            >
+              <DisplayInput />
+            </Form.Item>
+          ))}
+          {props.children}
+        </Form>
+      </Flex>
+    </ScreenContainer>
   );
 };

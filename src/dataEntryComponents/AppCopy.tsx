@@ -4,10 +4,15 @@ import {
 } from "@mui/icons-material";
 import { Tooltip } from "antd";
 import { textColor } from "./CodeBeam";
-import { useState } from "react";
+import { CSSProperties, useState } from "react";
 
-export const AppCopy = (props: { value?: string; color?: string }) => {
-  const { value = "", color = textColor } = props;
+export const AppCopy = (props: {
+  value?: string;
+  color?: string;
+  className?: string;
+  style?: CSSProperties;
+}) => {
+  const { value = "", color = textColor, className, style } = props;
 
   const [copy, setCopy] = useState<boolean>(false);
 
@@ -21,14 +26,14 @@ export const AppCopy = (props: { value?: string; color?: string }) => {
 
   if (copy) {
     return (
-      <Tooltip title="Copied">
+      <Tooltip title="Copied" style={style} className={className}>
         <LibraryAddCheckRounded style={{ color: color, fontSize: 18 }} />
       </Tooltip>
     );
   }
 
   return (
-    <Tooltip title="Copy">
+    <Tooltip title="Copy" style={style} className={className}>
       <ContentCopyRounded
         style={{ color: color, cursor: "pointer", fontSize: 18 }}
         onClick={handleCopy}

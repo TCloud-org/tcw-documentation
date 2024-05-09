@@ -49,3 +49,17 @@ html {
 .bg-slate-500\/2\.5 {
   background-color: rgb(100 116 139 / 0.025);
 }
+
+.color-link {
+  color                     : #7354d8 !important;
+  text-decoration           : underline transparent !important;
+  font-weight               : 500;
+  transition-property       : color, text-decoration-color;
+  transition-duration       : .15s;
+  transition-timing-function: cubic-bezier(.4, 0, .2, 1);
+}
+
+.color-link:hover {
+  color                : #3c0cd9 !important;
+  text-decoration-color: #3c0cd958 !important;
+}

@@ -1,8 +1,8 @@
-import { Flex, Typography } from "antd";
+import { Flex, Form, Typography } from "antd";
 import { graphXml } from "../config/businessConfig";
 import { HelpWord } from "../dataDisplayComponents/HelpWord";
 import { NumberedListItem } from "../dataDisplayComponents/NumberedListItem";
-import { CodeBeam } from "../dataEntryComponents/CodeBeam";
+import { CodeBeam, textColor } from "../dataEntryComponents/CodeBeam";
 import { ExternalLink } from "../dataEntryComponents/ExternalLink";
 import { QuickstartExample } from "./QuickstartExample";
 
@@ -91,17 +91,28 @@ export const AddGraphStep = () => {
               Version: 1,
             }}
           >
-            <CodeBeam
-              value="xml"
-              snippets={[
-                {
-                  key: "xml",
-                  label: "Graph",
-                  language: "xml",
-                  value: graphXml,
-                },
-              ]}
-            />
+            <Form.Item
+              label={
+                <Typography.Text style={{ color: textColor }}>
+                  Graph
+                </Typography.Text>
+              }
+            >
+              <CodeBeam
+                borderColor={textColor}
+                style={{ borderRadius: "0.375rem" }}
+                value="xml"
+                hideToolbar
+                snippets={[
+                  {
+                    key: "xml",
+                    label: "Graph",
+                    language: "xml",
+                    value: graphXml,
+                  },
+                ]}
+              />
+            </Form.Item>
           </QuickstartExample>
         </Flex>
       </Typography.Paragraph>
