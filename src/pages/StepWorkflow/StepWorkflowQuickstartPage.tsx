@@ -1,20 +1,23 @@
 import { Flex, Typography } from "antd";
 import { HeadingLink } from "../../dataDisplayComponents/HeadingLink";
-import { DocContainer } from "../../layoutComponents/DocContainer";
 import { NumberedListItem } from "../../dataDisplayComponents/NumberedListItem";
+import { ExternalLink } from "../../dataEntryComponents/ExternalLink";
+import { DocContainer } from "../../layoutComponents/DocContainer";
+import { AddClientExample } from "../../stepWorkflowComponents/AddClientExample";
+import { AddGraphStep } from "../../stepWorkflowComponents/AddGraphStep";
+import { CreateWorkflowStep } from "../../stepWorkflowComponents/CreateWorkflowStep";
 
 const steps = [
   {
     children: (
       <Typography.Paragraph>
         Go to{" "}
-        <a
+        <ExternalLink
           href="https://www.tc-workflow.com/client/add"
           target="_blank"
-          rel="noreferrer"
         >
           Add Client
-        </a>{" "}
+        </ExternalLink>{" "}
         page.
       </Typography.Paragraph>
     ),
@@ -50,6 +53,7 @@ const steps = [
     ),
   },
 ];
+
 export const StepWorkflowQuickstartPage = () => {
   return (
     <DocContainer>
@@ -66,9 +70,10 @@ export const StepWorkflowQuickstartPage = () => {
       <HeadingLink level={2}>Set up a client</HeadingLink>
 
       <Typography.Paragraph>
-        To set up a client from one of your TCW accounts:
-      </Typography.Paragraph>
-      <Typography.Paragraph>
+        <Typography.Paragraph>
+          To set up a client from one of your TCW accounts:
+        </Typography.Paragraph>
+
         <Flex vertical gap={4}>
           {steps.map((step, i) => (
             <NumberedListItem index={i + 1} key={i}>
@@ -77,6 +82,21 @@ export const StepWorkflowQuickstartPage = () => {
           ))}
         </Flex>
       </Typography.Paragraph>
+
+      <Typography.Paragraph>
+        <Flex vertical gap={16}>
+          <Typography.Text>Example: </Typography.Text>
+          <AddClientExample />
+        </Flex>
+      </Typography.Paragraph>
+
+      <HeadingLink level={2}>Create a workflow</HeadingLink>
+
+      <CreateWorkflowStep />
+
+      <HeadingLink level={2}>Add a graph</HeadingLink>
+
+      <AddGraphStep />
     </DocContainer>
   );
 };

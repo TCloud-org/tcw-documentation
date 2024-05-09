@@ -56,6 +56,14 @@ const stepWorkflowMenuItems: MenuItem[] = [
             href: "/step-workflow/quickstart#set-up-a-client",
             title: "Set up a client",
           },
+          {
+            href: "/step-workflow/quickstart#create-a-workflow",
+            title: "Create a workflow",
+          },
+          {
+            href: "/step-workflow/quickstart#add-a-graph",
+            title: "Add a graph",
+          },
         ],
       },
     ],
@@ -76,3 +84,28 @@ export const getSiderItems = (path: string) => {
 
   return siderMenu[first as keyof typeof siderMenu];
 };
+
+export const graphXml = `<?xml version="1.0" encoding="UTF-8"?>
+<workflow name="CreateAccountWorkflow" initialState="Start">
+  <state name="PreprocessingData" service="WorkflowOrchestratorService" operation="fake">
+    <success name="finalized" goto="InitializeData"/>
+  </state>
+  <state name="InitializeData" service="WorkflowOrchestratorService" operation="fake">
+    <success name="finalized" goto="DataValidation"/>
+  </state>
+  <state name="DataValidation" service="WorkflowOrchestratorService" operation="fake">
+    <success name="finalized" goto="ProcessData"/>
+  </state>
+  <state name="ProcessData" service="WorkflowOrchestratorService" operation="fake">
+    <success name="finalized" goto="TransformData"/>
+  </state>
+  <state name="TransformData" service="WorkflowOrchestratorService" operation="fake">
+    <success name="finalized" goto="LoadData"/>
+  </state>
+  <state name="LoadData" service="WorkflowOrchestratorService" operation="fake">
+    <success name="finalized" goto="FinalizeProcess"/>
+  </state>
+  <state name="FinalizeProcess" service="WorkflowOrchestratorService" operation="fake">
+    <success name="finalized" goto="terminal"/>
+  </state>
+</workflow>`;

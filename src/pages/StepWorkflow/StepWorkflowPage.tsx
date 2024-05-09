@@ -10,11 +10,11 @@ const topics = [
   },
   {
     label: "Create a workflow",
-    href: "/",
+    href: "/step-workflow/quickstart#create-a-workflow",
   },
   {
     label: "Add an initial graph version of a workflow",
-    href: "/",
+    href: "/step-workflow/quickstart#add-a-graph",
   },
   {
     label: "Configure user API endpoint",
@@ -29,6 +29,7 @@ const topics = [
     href: "/",
   },
 ];
+
 export const StepWorkflowPage = () => {
   return (
     <DocContainer>
