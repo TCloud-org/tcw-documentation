@@ -1,15 +1,20 @@
 import { Flex, Typography } from "antd";
+import { graphXml } from "../config/businessConfig";
 import { HelpWord } from "../dataDisplayComponents/HelpWord";
 import { NumberedListItem } from "../dataDisplayComponents/NumberedListItem";
+import { CodeBeam } from "../dataEntryComponents/CodeBeam";
 import { ExternalLink } from "../dataEntryComponents/ExternalLink";
-import { AddGraphExample } from "./AddGraphExample";
+import { QuickstartExample } from "./QuickstartExample";
 
 const steps = [
   {
     children: (
       <Typography.Paragraph>
         Go to{" "}
-        <ExternalLink href="https://www.tc-workflow.com/graph/create">
+        <ExternalLink
+          href="https://www.tc-workflow.com/graph/create"
+          target="_blank"
+        >
           Add Graph
         </ExternalLink>{" "}
         page.
@@ -76,7 +81,18 @@ export const AddGraphStep = () => {
         <Flex vertical gap={16}>
           <Typography.Text>Example:</Typography.Text>
 
-          <AddGraphExample />
+          <QuickstartExample
+            data={{
+              Client: "AccountManagementClient",
+              Workflow: "CreateAccountWorkflow",
+              Alias: "live",
+              Description:
+                "Adding a verification state before seeding an account",
+              Version: 1,
+            }}
+          >
+            <CodeBeam language="xml" value={graphXml} label="Graph" />
+          </QuickstartExample>
         </Flex>
       </Typography.Paragraph>
     </Typography.Paragraph>

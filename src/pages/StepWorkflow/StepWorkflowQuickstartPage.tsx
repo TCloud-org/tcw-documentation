@@ -3,10 +3,13 @@ import { HeadingLink } from "../../dataDisplayComponents/HeadingLink";
 import { NumberedListItem } from "../../dataDisplayComponents/NumberedListItem";
 import { ExternalLink } from "../../dataEntryComponents/ExternalLink";
 import { DocContainer } from "../../layoutComponents/DocContainer";
-import { AddClientExample } from "../../stepWorkflowComponents/AddClientExample";
+import { AddAuthenticationStep } from "../../stepWorkflowComponents/AddAuthenticationStep";
 import { AddGraphStep } from "../../stepWorkflowComponents/AddGraphStep";
-import { CreateWorkflowStep } from "../../stepWorkflowComponents/CreateWorkflowStep";
 import { ConfigureEndpoint } from "../../stepWorkflowComponents/ConfigureEndpoint";
+import { CreatePolicyStep } from "../../stepWorkflowComponents/CreatePolicyStep";
+import { CreateWorkflowStep } from "../../stepWorkflowComponents/CreateWorkflowStep";
+import { QuickstartExample } from "../../stepWorkflowComponents/QuickstartExample";
+import { QuickstartNext } from "../../stepWorkflowComponents/QuickstartNext";
 
 const steps = [
   {
@@ -58,7 +61,7 @@ const steps = [
 export const StepWorkflowQuickstartPage = () => {
   return (
     <DocContainer>
-      <HeadingLink>Quickstart</HeadingLink>
+      <HeadingLink level={2}>Quickstart</HeadingLink>
 
       <Typography.Paragraph className="text-base">
         This guide will get you all set up and ready to use the Step Workflow
@@ -68,7 +71,7 @@ export const StepWorkflowQuickstartPage = () => {
         API.
       </Typography.Paragraph>
 
-      <HeadingLink level={2}>Set up a client</HeadingLink>
+      <HeadingLink level={3}>Set up a client</HeadingLink>
 
       <Typography.Paragraph>
         <Typography.Paragraph>
@@ -87,21 +90,37 @@ export const StepWorkflowQuickstartPage = () => {
       <Typography.Paragraph>
         <Flex vertical gap={16}>
           <Typography.Text>Example: </Typography.Text>
-          <AddClientExample />
+          <QuickstartExample
+            data={{
+              Client: "AccountManagementClient",
+            }}
+          />
         </Flex>
       </Typography.Paragraph>
 
-      <HeadingLink level={2}>Create a workflow</HeadingLink>
+      <HeadingLink level={3}>Create a workflow</HeadingLink>
 
       <CreateWorkflowStep />
 
-      <HeadingLink level={2}>Add a graph</HeadingLink>
+      <HeadingLink level={3}>Add a graph</HeadingLink>
 
       <AddGraphStep />
 
-      <HeadingLink level={2}>Configure user API endpoint</HeadingLink>
+      <HeadingLink level={3}>Configure user API endpoint</HeadingLink>
 
       <ConfigureEndpoint />
+
+      <HeadingLink level={3}>Set up API authentication</HeadingLink>
+
+      <AddAuthenticationStep />
+
+      <HeadingLink level={3}>Add a retry policy</HeadingLink>
+
+      <CreatePolicyStep />
+
+      <HeadingLink level={3}>What's next?</HeadingLink>
+
+      <QuickstartNext />
     </DocContainer>
   );
 };

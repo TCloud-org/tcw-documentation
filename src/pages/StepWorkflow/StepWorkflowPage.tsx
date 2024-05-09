@@ -22,24 +22,24 @@ const topics = [
   },
   {
     label: "Set up authentication for your API endpoint",
-    href: "/",
+    href: "/step-workflow/quickstart#set-up-api-authentication",
   },
   {
     label: "Create a new retry policy",
-    href: "/",
+    href: "/step-workflow/quickstart#add-a-retry-policy",
   },
 ];
 
 export const StepWorkflowPage = () => {
   return (
     <DocContainer>
-      <HeadingLink>Introduction</HeadingLink>
+      <HeadingLink level={2}>Introduction</HeadingLink>
       <Typography.Text className="text-xl">
         Get started with Step Workflow and learn by exploring interactive
         tutorials.
       </Typography.Text>
 
-      <HeadingLink level={2}>Overview</HeadingLink>
+      <HeadingLink level={3}>Overview</HeadingLink>
       <Typography.Paragraph>
         Step Workflow is a structured approach to building workflows within an
         application, allowing users to define a sequence of steps to be executed
@@ -47,7 +47,7 @@ export const StepWorkflowPage = () => {
         task, such as making an API call, processing data, or triggering events.
       </Typography.Paragraph>
 
-      <HeadingLink level={2}>Guideline</HeadingLink>
+      <HeadingLink level={3}>Guideline</HeadingLink>
       <Typography.Paragraph>
         This guideline walks you through the first steps of using{" "}
         <Typography.Link

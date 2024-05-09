@@ -1,7 +1,6 @@
 import { Flex, Typography } from "antd";
-import { HelpWord } from "../dataDisplayComponents/HelpWord";
-import { NumberedListItem } from "../dataDisplayComponents/NumberedListItem";
 import { ExternalLink } from "../dataEntryComponents/ExternalLink";
+import { NumberedListItem } from "../dataDisplayComponents/NumberedListItem";
 import { QuickstartExample } from "./QuickstartExample";
 
 const steps = [
@@ -9,11 +8,8 @@ const steps = [
     children: (
       <Typography.Paragraph>
         Go to{" "}
-        <ExternalLink
-          href="https://www.tc-workflow.com/workflow/add"
-          target="_blank"
-        >
-          Add Workflow
+        <ExternalLink href="https://www.tc-workflow.com/retry-policy/add">
+          Add Retry Policy
         </ExternalLink>{" "}
         page.
       </Typography.Paragraph>
@@ -22,31 +18,21 @@ const steps = [
   {
     children: (
       <Typography.Paragraph>
-        Enter a workflow name (e.g., CreateAccountWorkflow,
-        ProcessPaymentWorkflow, etc.).
+        Choose a retry policy based on your requirements (e.g., Fixed Retry,
+        Exponential Backoff, etc.).
       </Typography.Paragraph>
     ),
   },
   {
     children: (
       <Typography.Paragraph>
-        Choose a client that you have created in the previous step.
-      </Typography.Paragraph>
-    ),
-  },
-  {
-    children: (
-      <Typography.Paragraph>
-        Enter a{" "}
-        <HelpWord tooltip="Once a workflow enters the terminal state, it will remain available until the end of the retention period.">
-          retention period
-        </HelpWord>{" "}
-        for this workflow. Our recommendation is 1 month period.
+        Fill in all applicable numbers for your retry strategy. Note: as of
+        today, the unit for all these values are in minutes.
       </Typography.Paragraph>
     ),
   },
 ];
-export const CreateWorkflowStep = () => {
+export const CreatePolicyStep = () => {
   return (
     <Typography.Paragraph>
       <Typography.Paragraph>
@@ -63,9 +49,10 @@ export const CreateWorkflowStep = () => {
 
           <QuickstartExample
             data={{
-              Workflow: "CreateAccountWorkflow",
-              Client: "AccountManagementClient",
-              "Retention period": "1 month",
+              Policy: "Fixed Retry",
+              Name: "CreateAccountWorkflowFixedRetry",
+              "Number of retries": 20,
+              Delay: 10,
             }}
           />
         </Flex>

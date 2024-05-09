@@ -68,6 +68,18 @@ const stepWorkflowMenuItems: MenuItem[] = [
             href: "/step-workflow/quickstart#configure-user-api-endpoint",
             title: "Configure user API endpoint",
           },
+          {
+            href: "/step-workflow/quickstart#set-up-api-authentication",
+            title: "Set up API authentication",
+          },
+          {
+            href: "/step-workflow/quickstart#add-a-retry-policy",
+            title: "Add a retry policy",
+          },
+          {
+            href: "/step-workflow/quickstart#whats-next",
+            title: "What's next?",
+          },
         ],
       },
     ],

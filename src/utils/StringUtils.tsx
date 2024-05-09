@@ -1,5 +1,8 @@
 export const encodeSectionId = (section: string) => {
-  return section.replace(/\s+/g, "-").toLowerCase();
+  return section
+    .replace(/[^\w\s]/g, "")
+    .replace(/\s+/g, "-")
+    .toLowerCase();
 };
 
 export const decodeSectionId = (sectionId: string) => {

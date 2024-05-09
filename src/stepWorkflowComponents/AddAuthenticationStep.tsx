@@ -1,6 +1,6 @@
 import { Flex, Typography } from "antd";
-import { NumberedListItem } from "../dataDisplayComponents/NumberedListItem";
 import { ExternalLink } from "../dataEntryComponents/ExternalLink";
+import { NumberedListItem } from "../dataDisplayComponents/NumberedListItem";
 import { QuickstartExample } from "./QuickstartExample";
 
 const steps = [
@@ -9,10 +9,10 @@ const steps = [
       <Typography.Paragraph>
         Go to{" "}
         <ExternalLink
-          href="https://www.tc-workflow.com/service/add"
+          href="https://www.tc-workflow.com/auth-token/add"
           target="_blank"
         >
-          Add Service
+          Add Token
         </ExternalLink>{" "}
         page.
       </Typography.Paragraph>
@@ -21,38 +21,46 @@ const steps = [
   {
     children: (
       <Typography.Paragraph>
-        Enter your service name (e.g., WorkflowOrchestratorService). This is
-        utilized to link the service specified in the workflow to your API
-        endpoint.
+        Enter an authentication token name (e.g.,
+        WorkflowOrchestratorServiceAuth or WOSAuth).
       </Typography.Paragraph>
     ),
   },
   {
     children: (
       <Typography.Paragraph>
-        Enter your service endpoint (e.g., https://api.example.com/v1)
+        Select a client to whom this token belongs (e.g.,
+        AccountManagementClient).
       </Typography.Paragraph>
     ),
   },
   {
     children: (
       <Typography.Paragraph>
-        Select your environment either Production or Development.
+        Select a service (e.g., WorkflowOrchestratorService). Note: If no
+        services appear, you need to first{" "}
+        <a href="#configure-user-api-endpoint">create a service</a>.
       </Typography.Paragraph>
     ),
   },
   {
     children: (
       <Typography.Paragraph>
-        Enter an alias. Enter 'live' if you intend to use the current version.
+        Choose an authentication method (e.g., No Auth, Bearer).
       </Typography.Paragraph>
     ),
   },
 ];
-
-export const ConfigureEndpoint = () => {
+export const AddAuthenticationStep = () => {
   return (
     <Typography.Paragraph>
+      <Typography.Paragraph>
+        In this example, since we're leveraging a service provided by our
+        platform, no authentication setup is required as we are inherently
+        authenticated to access our services. However, if you want to set up an
+        authentication method for your API, here are the steps:
+      </Typography.Paragraph>
+
       <Typography.Paragraph>
         {steps.map((step, i) => (
           <NumberedListItem key={i} index={i + 1}>
@@ -64,15 +72,12 @@ export const ConfigureEndpoint = () => {
       <Typography.Paragraph>
         <Flex vertical gap={16}>
           <Typography.Text>Example:</Typography.Text>
-
           <QuickstartExample
             data={{
+              Name: "WOSAuth",
               Client: "AccountManagementClient",
-              Service: "WorkflowOrchestratorService",
-              Endpoint:
-                "http://wos-server-142456886.us-west-2.elb.amazonaws.com/api/private/v1",
-              Environment: "Development",
-              Alias: "live",
+              "Associated service": "WorkflowOrchestratorService",
+              "Authentication type": "No Auth",
             }}
           />
         </Flex>
