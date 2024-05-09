@@ -4,6 +4,7 @@ import { HeadingLink } from "../dataDisplayComponents/HeadingLink";
 import { CodeBeam } from "../dataEntryComponents/CodeBeam";
 import { useState } from "react";
 import { ExternalLink } from "../dataEntryComponents/ExternalLink";
+import { NumberedListItem } from "../dataDisplayComponents/NumberedListItem";
 
 const installationInstruction = {
   maven: "Add the following dependency to your application pom.xml file",
@@ -57,17 +58,39 @@ export const InitiateWorkflowStep = () => {
         for communicating with the Workflow service.
       </Typography.Paragraph>
 
-      <CodeBeam
-        value="java"
-        snippets={[
-          {
-            key: "java",
-            label: "Java",
-            language: "java",
-            value: `final StepWorkflowClient client = StepWorkflowClient.create();`,
-          },
-        ]}
-      />
+      <Typography.Paragraph>
+        <NumberedListItem index={1}>
+          <Typography.Paragraph>Import the client</Typography.Paragraph>
+        </NumberedListItem>
+        <CodeBeam
+          value="java"
+          snippets={[
+            {
+              key: "java",
+              label: "Java",
+              language: "java",
+              value: `import org.tcloud.client.StepWorkflowClient;`,
+            },
+          ]}
+        />
+      </Typography.Paragraph>
+
+      <Typography.Paragraph>
+        <NumberedListItem index={2}>
+          <Typography.Paragraph>Initialize the client</Typography.Paragraph>
+        </NumberedListItem>
+        <CodeBeam
+          value="java"
+          snippets={[
+            {
+              key: "java",
+              label: "Java",
+              language: "java",
+              value: `final StepWorkflowClient client = StepWorkflowClient.create();`,
+            },
+          ]}
+        />
+      </Typography.Paragraph>
 
       <HeadingLink level={4}>Make your first API request</HeadingLink>
 

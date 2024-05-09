@@ -90,9 +90,9 @@ export const CodeBeam = (props: {
       <ReactSyntaxHighlighter
         language={snippets.find((snippet) => snippet.key === select)?.language}
         style={atomOneDark}
-        showLineNumbers
+        showLineNumbers={borderColor !== "transparent"}
         customStyle={{
-          padding: "27px",
+          padding: borderColor === "transparent" ? 0 : "27px",
           fontSize: "0.75rem",
           backgroundColor: "#0a1021",
           border: "none",

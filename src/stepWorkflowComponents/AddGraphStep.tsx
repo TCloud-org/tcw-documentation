@@ -99,7 +99,7 @@ export const AddGraphStep = () => {
               }
             >
               <CodeBeam
-                borderColor={textColor}
+                borderColor={"transparent"}
                 style={{ borderRadius: "0.375rem" }}
                 value="xml"
                 hideToolbar
