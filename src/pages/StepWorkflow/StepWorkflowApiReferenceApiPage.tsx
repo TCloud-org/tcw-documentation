@@ -34,15 +34,19 @@ const apis: ApiProps[] = [
 -H "Content-Type: application/json" \\
 -H "Authorization: Bearer <YOUR_ACCESS_TOKEN>" \\
 -d '{
-"clientId": "<INSERT_YOUR_CLIENT_ID>",
-"workflowId": "<INSERT_YOUR_WORKFLOW_ID>"
+  "clientId": "<INSERT_YOUR_CLIENT_ID>",
+  "workflowId": "<INSERT_YOUR_WORKFLOW_ID>"
 }'`,
           },
           {
             key: "java",
             label: "Java",
             language: "java",
-            value: "java",
+            value: `final InitiateWorkflowInput input = InitiateWorkflowInput.builder()
+        .clientId("<INSERT_YOUR_CLIENT_ID>")
+        .workflowId(1L) // Insert your workflow id
+        .build();
+stepWorkflowClient.initiateWorkflow(input);`,
           },
         ]}
         responseSnippets={[
@@ -51,9 +55,9 @@ const apis: ApiProps[] = [
             label: "JSON",
             language: "json",
             value: `{
-"workId": "8bfec5f6-ef46-4e02-9527-f4d9c4db6e88",
-"documentId": "b465734a-c871-47b7-b8fb-5f1a7ae7d1f2",
-"version": 1
+  "workId": "8bfec5f6-ef46-4e02-9527-f4d9c4db6e88",
+  "documentId": "b465734a-c871-47b7-b8fb-5f1a7ae7d1f2",
+  "version": 1
 }`,
           },
         ]}

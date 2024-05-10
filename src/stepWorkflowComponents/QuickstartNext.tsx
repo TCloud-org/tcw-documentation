@@ -7,7 +7,7 @@ const links = [
     label: "Get your API key from the TCW dashboard",
   },
   {
-    href: "/step-workflow/api-reference",
+    href: "/step-workflow/api-reference/introduction",
     label: "Check out the Step Workflow API reference",
   },
 ];

@@ -1,5 +1,5 @@
+import React, { useState, useEffect } from "react";
 import { Col, Flex, Row, Typography } from "antd";
-import { useState } from "react";
 import { createSpan } from "../../config/layoutConfig";
 import {
   ApiMethodHeading,
@@ -23,6 +23,20 @@ export const ApiReference = (props: {
 }) => {
   const [requestCode, setRequestCode] = useState<string>("curl");
   const [responseCode, setResponseCode] = useState<string>("json");
+
+  const [isSticky, setIsSticky] = useState(false);
+
+  const handleScroll = () => {
+    const offset = window.scrollY;
+    const triggerOffset = 100;
+
+    setIsSticky(offset > triggerOffset);
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const isParam = props.method === "DELETE" || props.method === "GET";
 
@@ -58,7 +72,14 @@ export const ApiReference = (props: {
             </Flex>
           </Col>
           <Col {...createSpan(12)}>
-            <Flex vertical gap={16}>
+            <Flex
+              vertical
+              gap={16}
+              style={{
+                position: isSticky ? "sticky" : "static",
+                top: "100px",
+              }}
+            >
               <CodeBeam
                 snippets={props.requestSnippets}
                 value={requestCode}

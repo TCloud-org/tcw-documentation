@@ -73,6 +73,10 @@ function App() {
           element: <StepWorkflowQuickstartPage />,
         },
         {
+          path: "/step-workflow/api-reference",
+          element: <Navigate to="/step-workflow/api-reference/introduction" />,
+        },
+        {
           path: "/step-workflow/api-reference/introduction",
           element: <StepWorkflowApiReferenceIntroPage />,
         },

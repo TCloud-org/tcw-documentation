@@ -21,13 +21,31 @@ export const mainMenuItems: MenuItem[] = [
 ];
 
 export const docPagination = {
-  "/step-workflow": {
-    next: "/step-workflow/quickstart",
+  "/step-workflow/getting-started/introduction": {
+    next: "/step-workflow/getting-started/quickstart",
     nextLabel: "Quickstart",
   },
-  "/step-workflow/quickstart": {
-    prev: "/step-workflow",
+  "/step-workflow/getting-started/quickstart": {
+    prev: "/step-workflow/getting-started/introduction",
     prevLabel: "Introduction",
+    next: "/step-workflow/api-reference/introduction",
+    nextLabel: "API Reference",
+  },
+  "/step-workflow/api-reference/introduction": {
+    prev: "/step-workflow/getting-started/quickstart",
+    prevLabel: "Quickstart",
+    next: "/step-workflow/api-reference/authentication",
+    nextLabel: "Authentication",
+  },
+  "/step-workflow/api-reference/authentication": {
+    prev: "/step-workflow/api-reference/introduction",
+    prevLabel: "API Reference",
+    next: "/step-workflow/api-reference/api",
+    nextLabel: "API",
+  },
+  "/step-workflow/api-reference/api": {
+    prev: "/step-workflow/api-reference/authentication",
+    prevLabel: "Authentication",
   },
 };
 
