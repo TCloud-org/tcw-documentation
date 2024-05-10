@@ -19,7 +19,7 @@ export const AppSider = () => {
         height: "100%",
         overflow: "auto",
       }}
-      className="px-6 pt-4 pb-8 z-10"
+      className="hidden lg:block px-6 pt-4 pb-8 z-10"
     >
       <Flex>
         <a href="/" className="items-center flex gap-2">
