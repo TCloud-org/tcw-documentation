@@ -68,7 +68,7 @@ export const GetWorksByClientIdParamProperties: PropertyItemProps[] = [
 export const GetWorksByClientIdOutputProperties: PropertyItemProps[] = [
   {
     property: "workflows",
-    type: "List of Workflow",
+    type: "List<Workflow>",
     description: "A list of workflows.",
   },
 ];
@@ -177,7 +177,7 @@ export const GetWorksInDateRangeInputProperties: PropertyItemProps[] = [
 export const GetWorksInDateRangeOutputProperties: PropertyItemProps[] = [
   {
     property: "works",
-    type: "List of Work",
+    type: "List<Work>",
     description:
       "A list of work items in a specific date range or a period of time.",
   },
@@ -296,6 +296,154 @@ export const PeriodModel: ModelProps = {
     {
       property: "LAST_MONTH",
       description: "Represents the previous month.",
+    },
+  ],
+};
+
+export const DocumentModel: ModelProps = {
+  name: "Document",
+  properties: [
+    {
+      property: "documentId",
+      type: "String",
+      description: "The identifier of the document.",
+    },
+    {
+      property: "documentBody",
+      type: "DocumentBody",
+      description: "The body content of the document.",
+    },
+  ],
+};
+
+export const DocumentBodyModel: ModelProps = {
+  name: "DocumentBody",
+  properties: [
+    {
+      property: "entities",
+      type: "Map<String, byte[]>",
+      description: "Map of entity names to byte arrays.",
+    },
+    {
+      property: "changeLogs",
+      type: "List<DocumentEntityChangeLog>",
+      description: "List of change logs for the document.",
+    },
+  ],
+};
+
+export const DocumentEntityChangeLogModel: ModelProps = {
+  name: "DocumentEntityChangeLog",
+  properties: [
+    {
+      property: "added",
+      type: "Map<String, byte[]>",
+      description: "Map of added entities with their byte arrays.",
+    },
+    {
+      property: "removed",
+      type: "Map<String, byte[]>",
+      description: "Map of removed entities with their byte arrays.",
+    },
+    {
+      property: "modified",
+      type: "Map<String, byte[]>",
+      description: "Map of modified entities with their byte arrays.",
+    },
+    {
+      property: "createdAt",
+      type: "String",
+      description: "The timestamp when the change log was created.",
+    },
+  ],
+};
+
+export const WorkflowConfigurationModel: ModelProps = {
+  name: "WorkflowConfiguration",
+  properties: [
+    {
+      property: "workflowConfigurationId",
+      type: "String",
+      description: "The identifier of the workflow configuration.",
+    },
+    {
+      property: "workId",
+      type: "String",
+      description:
+        "The identifier of the work associated with the configuration.",
+    },
+    {
+      property: "clientId",
+      type: "String",
+      description:
+        "The identifier of the client associated with the configuration.",
+    },
+    {
+      property: "workflowVersionConfig",
+      type: "Configuration",
+      description: "The configuration for the workflow version.",
+    },
+    {
+      property: "stateEndpointConfigMap",
+      type: "Map<String, Configuration>",
+      description: "Map of state names to their endpoint configurations.",
+    },
+    {
+      property: "serviceEndpointConfigMap",
+      type: "Map<String, Configuration>",
+      description: "Map of service names to their endpoint configurations.",
+    },
+    {
+      property: "workflowRetryConfig",
+      type: "RetryConfig",
+      description: "Retry configuration for the workflow.",
+    },
+    {
+      property: "stateRetryConfigMap",
+      type: "Map<String, RetryConfig>",
+      description: "Map of state names to their retry configurations.",
+    },
+    {
+      property: "modifiedAt",
+      type: "String",
+      description: "The timestamp when the configuration was last modified.",
+    },
+    {
+      property: "version",
+      type: "Long",
+      description: "The version of the workflow configuration.",
+    },
+  ],
+};
+
+export const ConfigurationModel: ModelProps = {
+  name: "Configuration",
+  properties: [
+    {
+      property: "name",
+      type: "String",
+      description: "The name of the configuration.",
+    },
+    {
+      property: "alias",
+      type: "String",
+      description: "The alias of the configuration.",
+    },
+  ],
+};
+
+export const RetryConfigModel: ModelProps = {
+  name: "RetryConfig",
+  properties: [
+    {
+      property: "retryPolicyId",
+      type: "Long",
+      description: "The identifier of the retry policy.",
+    },
+    {
+      property: "retryIndex",
+      type: "Integer",
+      description: "The index of the retry.",
     },
   ],
 };

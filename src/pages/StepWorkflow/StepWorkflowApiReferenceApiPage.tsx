@@ -3,6 +3,10 @@ import { ReactNode } from "react";
 import { Fragment } from "react/jsx-runtime";
 import { ApiReference } from "../../apiRefComponents/StepWorkflow/ApiReference";
 import {
+  ConfigurationModel,
+  DocumentBodyModel,
+  DocumentEntityChangeLogModel,
+  DocumentModel,
   GetWorksByClientIdOutputProperties,
   GetWorksByClientIdParamProperties,
   GetWorksInDateRangeInputProperties,
@@ -11,7 +15,9 @@ import {
   InitiateWorkflowOutputProperties,
   PeriodModel,
   RetentionPeriodModel,
+  RetryConfigModel,
   WorkModel,
+  WorkflowConfigurationModel,
   WorkflowMetadataModel,
   WorkflowModel,
 } from "../../config/propertyConfig";
@@ -82,6 +88,14 @@ stepWorkflowClient.initiateWorkflow(input);`,
         name="NotifyWorkflow"
         description="This endpoint allows you to initiate a new step workflow"
         requestBody={InitiateWorkflowInputProperties}
+        models={[
+          DocumentModel,
+          DocumentEntityChangeLogModel,
+          DocumentBodyModel,
+          WorkflowConfigurationModel,
+          ConfigurationModel,
+          RetryConfigModel,
+        ]}
         requestSnippets={[
           {
             key: "curl",
