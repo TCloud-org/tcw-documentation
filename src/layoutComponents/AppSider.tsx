@@ -17,6 +17,7 @@ export const AppSider = () => {
         borderRight: `1px solid ${token.colorBorder}`,
         position: "fixed",
         height: "100%",
+        overflow: "auto",
       }}
       className="px-6 pt-4 pb-8 z-10"
     >
@@ -30,6 +31,8 @@ export const AppSider = () => {
       <nav className="hidden lg:mt-10 lg:block">
         <AppMenu items={getSiderItems(location.pathname)} />
       </nav>
+
+      <div className="h-10" />
     </Sider>
   );
 };

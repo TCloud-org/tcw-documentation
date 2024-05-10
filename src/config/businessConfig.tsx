@@ -1,3 +1,4 @@
+import { MenuHttpMethod } from "../dataDisplayComponents/MenuHttpMethod";
 import { MenuItem } from "../layoutComponents/AppMenu";
 
 export const logoImageUrl = "https://tcw-icon.s3.us-west-2.amazonaws.com/7.png";
@@ -106,13 +107,19 @@ const stepWorkflowMenuItems: MenuItem[] = [
           {
             href: "/step-workflow/api-reference/api#initiateworkflow",
             title: "InitiateWorkflow",
-            titleDecorator: (
-              <span className="font-mono text-[0.625rem] font-semibold leading-6 text-zinc-400 dark:text-zinc-500">
-                POST
-              </span>
-            ),
+            titleDecorator: <MenuHttpMethod>POST</MenuHttpMethod>,
           },
-        ],
+          {
+            href: "/step-workflow/api-reference/api#getworksindaterange",
+            title: "GetWorksInDateRange",
+            titleDecorator: <MenuHttpMethod>POST</MenuHttpMethod>,
+          },
+          {
+            href: "/step-workflow/api-reference/api#getworkflowsbyclientid",
+            title: "GetWorkflowsByClientId",
+            titleDecorator: <MenuHttpMethod>GET</MenuHttpMethod>,
+          },
+        ].sort((a, b) => a.title.localeCompare(b.title)),
       },
     ],
   },

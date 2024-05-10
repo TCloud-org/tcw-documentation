@@ -50,3 +50,20 @@ export const InitiateWorkflowOutputProperties: PropertyItemProps[] = [
     description: "A version of the current task.",
   },
 ];
+
+export const GetWorksByClientIdParamProperties: PropertyItemProps[] = [
+  {
+    property: "clientId",
+    type: "String",
+    description: "An unique identifier of a client.",
+    mandatory: true,
+  },
+];
+
+export const GetWorksByClientIdOutputProperties: PropertyItemProps[] = [
+  {
+    property: "workflows",
+    type: "List of Workflow",
+    description: "A list of workflows.",
+  },
+];

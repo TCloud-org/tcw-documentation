@@ -102,7 +102,7 @@ export const AppMenu = (props: { items?: MenuItem[] }) => {
                 style={{ paddingLeft: `${depth}rem` }}
                 aria-current="page"
               >
-                <span className="truncate">{item.title}</span>
+                <span className="break-all">{item.title}</span>
                 {item.titleDecorator}
               </a>
               {shouldEmphasize(
