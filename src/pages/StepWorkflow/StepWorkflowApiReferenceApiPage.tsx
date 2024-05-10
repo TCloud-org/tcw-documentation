@@ -5,8 +5,14 @@ import { ApiReference } from "../../apiRefComponents/StepWorkflow/ApiReference";
 import {
   GetWorksByClientIdOutputProperties,
   GetWorksByClientIdParamProperties,
+  GetWorksInDateRangeInputProperties,
+  GetWorksInDateRangeOutputProperties,
   InitiateWorkflowInputProperties,
   InitiateWorkflowOutputProperties,
+  RetentionPeriodModel,
+  WorkModel,
+  WorkflowMetadataModel,
+  WorkflowModel,
 } from "../../config/propertyConfig";
 
 interface ApiProps {
@@ -31,7 +37,6 @@ const apis: ApiProps[] = [
             label: "cURL",
             language: "bash",
             value: `curl -X POST https://wos-server-142456886.us-west-2.elb.amazonaws.com/api/private/v1/initiate-workflow 
--H "Content-Type: application/json" \\
 -H "Authorization: Bearer <YOUR_ACCESS_TOKEN>" \\
 -d '{
   "clientId": "<INSERT_YOUR_CLIENT_ID>",
@@ -72,6 +77,9 @@ stepWorkflowClient.initiateWorkflow(input);`,
         endpoint="/api/private/v1/get-works-in-date-range"
         name="GetWorksInDateRange"
         description="This API endpoint retrieves a list of works within a specified date range."
+        requestBody={GetWorksInDateRangeInputProperties}
+        response={GetWorksInDateRangeOutputProperties}
+        models={[WorkModel]}
       />
     ),
   },
@@ -85,6 +93,40 @@ stepWorkflowClient.initiateWorkflow(input);`,
         description="This API endpoint retrieves a list of workflows associated with a specific client ID."
         requestBody={GetWorksByClientIdParamProperties}
         response={GetWorksByClientIdOutputProperties}
+        requestSnippets={[
+          {
+            key: "curl",
+            label: "cURL",
+            language: "bash",
+            value: `curl -X GET \\
+  "https://wos-server-142456886.us-west-2.elb.amazonaws.com/api/private/v1/get-workflows-by-client-id?clientId=<YOUR_CLIENT_ID>" \\
+  -H "Authorization: Bearer <YOUR_ACCESS_TOKEN>"`,
+          },
+        ]}
+        responseSnippets={[
+          {
+            key: "json",
+            label: "JSON",
+            language: "json",
+            value: `[
+  {
+    "workflowId": 123456789,
+    "workflowName": "SampleWorkflow",
+    "clientId": "client123",
+    "createdAt": "${new Date().toISOString()}",
+    "updatedAt": "${new Date().toISOString()}",
+    "nextAvailableVersion": 2,
+    "metadata": {
+      "retentionPeriod": {
+        "period": 30,
+        "unit": "DAYS"
+      }
+    }
+  }
+]`,
+          },
+        ]}
+        models={[WorkflowModel, WorkflowMetadataModel, RetentionPeriodModel]}
       />
     ),
   },

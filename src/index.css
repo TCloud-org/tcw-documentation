@@ -63,3 +63,7 @@ html {
   color                : #3c0cd9 !important;
   text-decoration-color: #3c0cd958 !important;
 }
+
+.transition-height {
+  transition: all 0.3s ease-out;
+}

@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { Col, Flex, Row, Typography } from "antd";
+import { useState, useEffect, Fragment } from "react";
+import { Col, Collapse, Flex, Row, Typography } from "antd";
 import { createSpan } from "../../config/layoutConfig";
 import {
   ApiMethodHeading,
@@ -10,6 +10,7 @@ import { PropertyItemProps } from "../../dataDisplayComponents/PropertyItem";
 import { PropertyList } from "../../dataDisplayComponents/PropertyList";
 import { CodeBeam, Snippet } from "../../dataEntryComponents/CodeBeam";
 import { DocContainer } from "../../layoutComponents/DocContainer";
+import { ModelProps } from "../../config/propertyConfig";
 
 export const ApiReference = (props: {
   method: HttpMethod;
@@ -20,7 +21,10 @@ export const ApiReference = (props: {
   response?: PropertyItemProps[];
   requestSnippets?: Snippet[];
   responseSnippets?: Snippet[];
+  models?: ModelProps[];
 }) => {
+  const { models = [] } = props;
+
   const [requestCode, setRequestCode] = useState<string>("curl");
   const [responseCode, setResponseCode] = useState<string>("json");
 
@@ -69,6 +73,22 @@ export const ApiReference = (props: {
                   <PropertyList items={props.response} />
                 </>
               )}
+
+              {models.map((model, i) => (
+                <Collapse
+                  key={i}
+                  expandIconPosition="right"
+                  items={[
+                    {
+                      key: i,
+                      label: (
+                        <Typography.Text strong>{model.name}</Typography.Text>
+                      ),
+                      children: <PropertyList items={model.properties} />,
+                    },
+                  ]}
+                />
+              ))}
             </Flex>
           </Col>
           <Col {...createSpan(12)}>
@@ -79,7 +99,6 @@ export const ApiReference = (props: {
                 position: isSticky ? "sticky" : "static",
                 top: "100px",
                 transition: "transform 0.3s ease-in-out",
-                transform: isSticky ? "translateY(-20px)" : "none",
               }}
             >
               <CodeBeam
