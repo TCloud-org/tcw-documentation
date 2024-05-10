@@ -1,12 +1,16 @@
 export const encodeSectionId = (section: string) => {
   return section
-    .replace(/[^\w\s]/g, "")
-    .replace(/\s+/g, "-")
+    .replaceAll(/[^\w\s]/g, "")
+    .replaceAll(/\s+/g, "-")
     .toLowerCase();
 };
 
+export const cleanSection = (section: string) => {
+  return section.replaceAll(/[^\w\s]/g, "").replaceAll(" ", "");
+};
+
 export const decodeSectionId = (sectionId: string) => {
-  return sectionId.split("-").join(" ");
+  return sectionId.split("-").join("");
 };
 
 export const getFirstPath = (path: string) => {

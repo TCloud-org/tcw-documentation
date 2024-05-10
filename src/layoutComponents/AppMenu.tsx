@@ -1,6 +1,10 @@
-import { useLocation } from "react-router-dom";
-import { decodeSectionId, getFirstPath } from "../utils/StringUtils";
 import { theme } from "antd";
+import { useLocation } from "react-router-dom";
+import {
+  cleanSection,
+  decodeSectionId,
+  getFirstPath,
+} from "../utils/StringUtils";
 
 export interface MenuItem {
   title?: string;
@@ -12,16 +16,49 @@ const whitelist = {
   "/step-workflow": "introduction",
 };
 
+// const options: IntersectionObserverInit = {
+//   rootMargin: "0px 0px -85% 0px",
+//   threshold: 0,
+// };
+
 export const AppMenu = (props: { items?: MenuItem[] }) => {
   const location = useLocation();
-  const hash = location.hash.slice(1);
   const { items = [] } = props;
   const { token } = theme.useToken();
+  const sectionId = location.hash.slice(1);
 
-  const shouldEmphasize = (item: MenuItem, index: number, depth: number) => {
+  // useEffect(() => {
+  //   const observer = new IntersectionObserver((entries, observer) => {
+  //     const entry = entries[0];
+  //     const anchorTag = entry.target.querySelector("a");
+  //     if (anchorTag && anchorTag.id) {
+  //       if (entry.isIntersecting) {
+  //         // setSectionId(anchorTag.id);
+  //       }
+  //     }
+  //   }, options);
+  //   const docElements = document.querySelector(".doc")?.children;
+  //   if (docElements) {
+  //     for (let i = 0; i < docElements.length; i++) {
+  //       observer.observe(docElements[i]);
+  //     }
+  //   }
+
+  //   return () => {
+  //     const docElements = document.querySelector(".doc")?.children;
+  //     if (docElements) {
+  //       for (let i = 0; i < docElements.length; i++) {
+  //         observer.unobserve(docElements[i]);
+  //       }
+  //     }
+  //   };
+  // }, []);
+
+  const shouldEmphasize = (item: MenuItem) => {
     const firstPath = getFirstPath(location.pathname);
     if (
-      decodeSectionId(firstPath).toLowerCase() === item.title?.toLowerCase()
+      decodeSectionId(firstPath).toLowerCase() ===
+      cleanSection(item.title || "").toLowerCase()
     ) {
       return true;
     }
@@ -32,6 +69,23 @@ export const AppMenu = (props: { items?: MenuItem[] }) => {
       );
     }
     return false;
+  };
+
+  const shouldHighlight = (item: MenuItem, depth: number) => {
+    if (
+      cleanSection(item.title || "").toLowerCase() ===
+      decodeSectionId(sectionId).toLowerCase()
+    ) {
+      return true;
+    }
+    if (depth < 2) {
+      return false;
+    }
+    const lastPath = location.pathname.split("/").splice(-1)[0];
+    return (
+      decodeSectionId(lastPath).toLowerCase() ===
+      cleanSection(item.title || "").toLowerCase()
+    );
   };
 
   const renderChildren = (data: MenuItem[], depth: number) => {
@@ -66,7 +120,7 @@ export const AppMenu = (props: { items?: MenuItem[] }) => {
               >
                 <span className="truncate">{item.title}</span>
               </a>
-              {shouldEmphasize(item, i, depth) && (
+              {shouldEmphasize(item) && (
                 <div
                   className="absolute left-0 h-7 top-1 w-px"
                   style={{
@@ -77,7 +131,7 @@ export const AppMenu = (props: { items?: MenuItem[] }) => {
                   }}
                 />
               )}
-              {item.title?.toLowerCase() === decodeSectionId(hash) && (
+              {shouldHighlight(item, depth) && (
                 <div
                   className="absolute top-1 right-0 h-7 bg-slate-500/5 z-0 rounded-md"
                   style={{
