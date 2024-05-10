@@ -8,7 +8,9 @@ export const Container = (props: {
     <div className="relative flex h-full flex-col pt-14" style={props.style}>
       <main className="flex-auto">
         <article className="flex h-full flex-col pb-10">
-          <div className="flex-auto ml-80">{props.children}</div>
+          <div className="flex-auto ml-80">
+            <div className="xl:max-w-7xl ml-auto mr-auto">{props.children}</div>
+          </div>
         </article>
       </main>
     </div>

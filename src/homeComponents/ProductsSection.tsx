@@ -25,7 +25,7 @@ export const ProductsSection = () => {
   const [query, setQuery] = useState<string>("");
 
   return (
-    <Flex vertical gap={32}>
+    <Flex vertical gap={32} className="z-10">
       <Typography.Title level={4} style={{ margin: 0 }}>
         All Products
       </Typography.Title>
