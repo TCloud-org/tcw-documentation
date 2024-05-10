@@ -1,18 +1,25 @@
 import { Layout, theme } from "antd";
 import { Content } from "antd/es/layout/layout";
-import { Outlet, RouterProvider, createBrowserRouter } from "react-router-dom";
+import {
+  Navigate,
+  Outlet,
+  RouterProvider,
+  createBrowserRouter,
+} from "react-router-dom";
 import "./App.css";
-import { AppSider } from "./layoutComponents/AppSider";
-import { AppHeader } from "./layoutComponents/AppHeader";
 import { AppFooter } from "./layoutComponents/AppFooter";
+import { AppHeader } from "./layoutComponents/AppHeader";
+import { AppSider } from "./layoutComponents/AppSider";
+import { Container } from "./layoutComponents/Container";
+import { EmailNotificationWorkflowPage } from "./pages/EmailNotificationWorkflowPage";
 import { HomePage } from "./pages/HomePage";
 import { NotFoundPage } from "./pages/NotFoundPage";
-import { StepWorkflowPage } from "./pages/StepWorkflow/StepWorkflowPage";
-import { EmailNotificationWorkflowPage } from "./pages/EmailNotificationWorkflowPage";
-import { Container } from "./layoutComponents/Container";
-import { StepWorkflowQuickstartPage } from "./pages/StepWorkflow/StepWorkflowQuickstartPage";
-import { StepWorkflowApiReferencePage } from "./pages/StepWorkflow/StepWorkflowApiReferencePage";
+import { StepWorkflowApiReferenceAuthPage } from "./pages/StepWorkflow/StepWorkflowApiReferenceAuthPage";
+import { StepWorkflowApiReferenceIntroPage } from "./pages/StepWorkflow/StepWorkflowApiReferenceIntroPage";
 import { StepWorkflowInitiateWorkflowPage } from "./pages/StepWorkflow/StepWorkflowInitiateWorkflowPage";
+import { StepWorkflowPage } from "./pages/StepWorkflow/StepWorkflowPage";
+import { StepWorkflowQuickstartPage } from "./pages/StepWorkflow/StepWorkflowQuickstartPage";
+import { StepWorkflowApiReferenceApiPage } from "./pages/StepWorkflow/StepWorkflowApiReferenceApiPage";
 
 function App() {
   const Wrapper = () => {
@@ -48,18 +55,38 @@ function App() {
         },
         {
           path: "/step-workflow",
+          element: (
+            <Navigate to="/step-workflow/getting-started/introduction" />
+          ),
+        },
+        {
+          path: "/step-workflow/getting-started",
+          element: (
+            <Navigate to="/step-workflow/getting-started/introduction" />
+          ),
+        },
+        {
+          path: "/step-workflow/getting-started/introduction",
           element: <StepWorkflowPage />,
         },
         {
-          path: "/step-workflow/quickstart",
+          path: "/step-workflow/getting-started/quickstart",
           element: <StepWorkflowQuickstartPage />,
         },
         {
-          path: "/step-workflow/api-reference",
-          element: <StepWorkflowApiReferencePage />,
+          path: "/step-workflow/api-reference/introduction",
+          element: <StepWorkflowApiReferenceIntroPage />,
         },
         {
-          path: "/step-workflow/api-reference/initiate-workflow",
+          path: "/step-workflow/api-reference/authentication",
+          element: <StepWorkflowApiReferenceAuthPage />,
+        },
+        {
+          path: "/step-workflow/api-reference/api",
+          element: <StepWorkflowApiReferenceApiPage />,
+        },
+        {
+          path: "/step-workflow/api-reference/api/initiateworkflow",
           element: <StepWorkflowInitiateWorkflowPage />,
         },
         {

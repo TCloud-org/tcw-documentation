@@ -35,63 +35,76 @@ const stepWorkflowMenuItems: MenuItem[] = [
     title: "Getting Started",
     children: [
       {
-        href: "/step-workflow",
+        href: "/step-workflow/getting-started/introduction",
         title: "Introduction",
         children: [
           {
-            href: "/step-workflow#overview",
+            href: "/step-workflow/getting-started/introduction#overview",
             title: "Overview",
           },
           {
-            href: "/step-workflow#guideline",
+            href: "/step-workflow/getting-started/introduction#guideline",
             title: "Guideline",
           },
         ],
       },
       {
-        href: "/step-workflow/quickstart",
+        href: "/step-workflow/getting-started/quickstart",
         title: "Quickstart",
         children: [
           {
-            href: "/step-workflow/quickstart#set-up-a-client",
+            href: "/step-workflow/getting-started/quickstart#set-up-a-client",
             title: "Set up a client",
           },
           {
-            href: "/step-workflow/quickstart#create-a-workflow",
+            href: "/step-workflow/getting-started/quickstart#create-a-workflow",
             title: "Create a workflow",
           },
           {
-            href: "/step-workflow/quickstart#add-a-graph",
+            href: "/step-workflow/getting-started/quickstart#add-a-graph",
             title: "Add a graph",
           },
           {
-            href: "/step-workflow/quickstart#configure-user-api-endpoint",
+            href: "/step-workflow/getting-started/quickstart#configure-user-api-endpoint",
             title: "Configure user API endpoint",
           },
           {
-            href: "/step-workflow/quickstart#set-up-api-authentication",
+            href: "/step-workflow/getting-started/quickstart#set-up-api-authentication",
             title: "Set up API authentication",
           },
           {
-            href: "/step-workflow/quickstart#add-a-retry-policy",
+            href: "/step-workflow/getting-started/quickstart#add-a-retry-policy",
             title: "Add a retry policy",
           },
           {
-            href: "/step-workflow/quickstart#initiate-a-workflow",
+            href: "/step-workflow/getting-started/quickstart#initiate-a-workflow",
             title: "Initiate a workflow",
           },
           {
-            href: "/step-workflow/quickstart#whats-next",
+            href: "/step-workflow/getting-started/quickstart#whats-next",
             title: "What's next?",
           },
         ],
       },
+    ],
+  },
+  {
+    title: "API Reference",
+    children: [
       {
-        href: "/step-workflow/api-reference",
-        title: "API Reference",
+        href: "/step-workflow/api-reference/introduction",
+        title: "Introduction",
+      },
+      {
+        href: "/step-workflow/api-reference/authentication",
+        title: "Authentication",
+      },
+      {
+        href: "/step-workflow/api-reference/api",
+        title: "API",
         children: [
           {
-            href: "/step-workflow/api-reference/initiate-workflow",
+            href: "/step-workflow/api-reference/api/initiateworkflow",
             title: "InitiateWorkflow",
           },
         ],

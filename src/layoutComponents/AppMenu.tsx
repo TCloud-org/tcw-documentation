@@ -3,6 +3,7 @@ import { useLocation } from "react-router-dom";
 import {
   cleanSection,
   decodeSectionId,
+  encodeSectionId,
   getFirstPath,
 } from "../utils/StringUtils";
 
@@ -11,10 +12,6 @@ export interface MenuItem {
   children?: MenuItem[];
   href?: string;
 }
-
-const whitelist = {
-  "/step-workflow": "introduction",
-};
 
 // const options: IntersectionObserverInit = {
 //   rootMargin: "0px 0px -85% 0px",
@@ -54,41 +51,21 @@ export const AppMenu = (props: { items?: MenuItem[] }) => {
   //   };
   // }, []);
 
-  const shouldEmphasize = (item: MenuItem) => {
-    const firstPath = getFirstPath(location.pathname);
-    if (
-      decodeSectionId(firstPath).toLowerCase() ===
-      cleanSection(item.title || "").toLowerCase()
-    ) {
-      return true;
-    }
-    if (location.pathname in whitelist) {
-      return (
-        whitelist[location.pathname as keyof typeof whitelist].toLowerCase() ===
-        item.title?.toLowerCase()
-      );
-    }
-    return false;
+  const shouldEmphasize = (path: string) => {
+    return path === location.pathname && path.split("/").length === 4;
   };
 
-  const shouldHighlight = (item: MenuItem, depth: number) => {
+  const shouldHighlight = (path: string, item: MenuItem) => {
     if (
       cleanSection(item.title || "").toLowerCase() ===
       decodeSectionId(sectionId).toLowerCase()
     ) {
       return true;
     }
-    if (depth < 2) {
-      return false;
-    }
-    const lastPath = location.pathname.split("/").splice(-1)[0];
-    return (
-      decodeSectionId(lastPath).toLowerCase() ===
-      cleanSection(item.title || "").toLowerCase()
-    );
+    return path === location.pathname && path.split("/").length === 5;
   };
 
-  const renderChildren = (data: MenuItem[], depth: number) => {
+  const renderChildren = (data: MenuItem[], depth: number, path: string) => {
     return data.map((item, i) => (
       <ul key={`${depth}-${i}`}>
         <li className={`relative ${depth === 0 ? "mt-6" : ""}`}>
@@ -105,7 +82,11 @@ export const AppMenu = (props: { items?: MenuItem[] }) => {
                     transformOrigin: "50% 50% 0px",
                   }}
                 />
-                {renderChildren(item.children || [], depth + 1)}
+                {renderChildren(
+                  item.children || [],
+                  depth + 1,
+                  path + "/" + encodeSectionId(item.title || "")
+                )}
               </div>
             </>
           ) : (
@@ -120,7 +101,9 @@ export const AppMenu = (props: { items?: MenuItem[] }) => {
               >
                 <span className="truncate">{item.title}</span>
               </a>
-              {shouldEmphasize(item) && (
+              {shouldEmphasize(
+                path + "/" + encodeSectionId(item.title || "")
+              ) && (
                 <div
                   className="absolute left-0 h-7 top-1 w-px"
                   style={{
@@ -131,7 +114,10 @@ export const AppMenu = (props: { items?: MenuItem[] }) => {
                   }}
                 />
               )}
-              {shouldHighlight(item, depth) && (
+              {shouldHighlight(
+                path + "/" + encodeSectionId(item.title || ""),
+                item
+              ) && (
                 <div
                   className="absolute top-1 right-0 h-7 bg-slate-500/5 z-0 rounded-md"
                   style={{
@@ -139,7 +125,11 @@ export const AppMenu = (props: { items?: MenuItem[] }) => {
                   }}
                 />
               )}
-              {renderChildren(item.children || [], depth + 1)}
+              {renderChildren(
+                item.children || [],
+                depth + 1,
+                path + "/" + encodeSectionId(item.title || "")
+              )}
             </>
           )}
         </li>
@@ -147,5 +137,5 @@ export const AppMenu = (props: { items?: MenuItem[] }) => {
     ));
   };
 
-  return <>{renderChildren(items, 0)}</>;
+  return <>{renderChildren(items, 0, getFirstPath(location.pathname))}</>;
 };

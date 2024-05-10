@@ -10,13 +10,14 @@ export const cleanSection = (section: string) => {
 };
 
 export const decodeSectionId = (sectionId: string) => {
+  if (!sectionId) return "";
   return sectionId.split("-").join("");
 };
 
 export const getFirstPath = (path: string) => {
   const comp = path.split("/");
-  if (comp.length <= 2) {
+  if (comp.length <= 1) {
     return "";
   }
-  return comp[2];
+  return "/" + comp[1];
 };
