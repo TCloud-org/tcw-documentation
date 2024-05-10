@@ -1,7 +1,7 @@
 import { LinkOutlined } from "@ant-design/icons";
 import { Typography } from "antd";
 import { TitleProps } from "antd/es/typography/Title";
-import { useState } from "react";
+import { CSSProperties, useState } from "react";
 import { encodeSectionId } from "../utils/StringUtils";
 
 export const scrollToHash = () => {
@@ -18,14 +18,15 @@ export const scrollToHash = () => {
 export const HeadingLink = (props: {
   level?: TitleProps["level"];
   children: string;
+  style?: CSSProperties;
 }) => {
-  const { level, children } = props;
+  const { level, children, style } = props;
   const [isHovered, setIsHovered] = useState(false);
   const id = encodeSectionId(children);
 
   return (
     <>
-      <Typography.Title level={level} style={{ marginBottom: 32 }}>
+      <Typography.Title level={level} style={{ marginBottom: 32, ...style }}>
         <a
           id={id}
           href={`#${id}`}

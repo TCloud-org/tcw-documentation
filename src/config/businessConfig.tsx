@@ -104,8 +104,13 @@ const stepWorkflowMenuItems: MenuItem[] = [
         title: "API",
         children: [
           {
-            href: "/step-workflow/api-reference/api/initiateworkflow",
+            href: "/step-workflow/api-reference/api#initiateworkflow",
             title: "InitiateWorkflow",
+            titleDecorator: (
+              <span className="font-mono text-[0.625rem] font-semibold leading-6 text-zinc-400 dark:text-zinc-500">
+                POST
+              </span>
+            ),
           },
         ],
       },

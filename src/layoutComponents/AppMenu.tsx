@@ -6,11 +6,13 @@ import {
   encodeSectionId,
   getFirstPath,
 } from "../utils/StringUtils";
+import { ReactNode } from "react";
 
 export interface MenuItem {
   title?: string;
   children?: MenuItem[];
   href?: string;
+  titleDecorator?: ReactNode;
 }
 
 // const options: IntersectionObserverInit = {
@@ -52,7 +54,8 @@ export const AppMenu = (props: { items?: MenuItem[] }) => {
   // }, []);
 
   const shouldEmphasize = (path: string) => {
-    return path === location.pathname && path.split("/").length === 4;
+    const emphasizedPath = location.pathname.split("/").slice(0, 4).join("/");
+    return path === emphasizedPath && path.split("/").length === 4;
   };
 
   const shouldHighlight = (path: string, item: MenuItem) => {
@@ -92,7 +95,7 @@ export const AppMenu = (props: { items?: MenuItem[] }) => {
           ) : (
             <>
               <a
-                className={`relative z-10 flex hover:text-slate-950/50 justify-between gap-2 py-2 text-sm transition ${
+                className={`relative z-10 flex hover:text-slate-950/50 justify-between items-center gap-2 py-2 pr-3 text-sm transition ${
                   depth < 2 ? "text-zinc-900" : "text-zinc-600"
                 } dark:text-white`}
                 href={item.href}
@@ -100,6 +103,7 @@ export const AppMenu = (props: { items?: MenuItem[] }) => {
                 aria-current="page"
               >
                 <span className="truncate">{item.title}</span>
+                {item.titleDecorator}
               </a>
               {shouldEmphasize(
                 path + "/" + encodeSectionId(item.title || "")
@@ -119,7 +123,7 @@ export const AppMenu = (props: { items?: MenuItem[] }) => {
                 item
               ) && (
                 <div
-                  className="absolute top-1 right-0 h-7 bg-slate-500/5 z-0 rounded-md"
+                  className="absolute top-0 bottom-0 right-0 bg-slate-500/5 z-0 rounded-md"
                   style={{
                     left: "-0.5rem",
                   }}

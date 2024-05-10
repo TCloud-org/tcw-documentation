@@ -13,7 +13,9 @@ export type Language =
   | "python"
   | "xml"
   | "gradle"
-  | "groovy";
+  | "groovy"
+  | "bash"
+  | "json";
 
 export interface Snippet {
   key: string;

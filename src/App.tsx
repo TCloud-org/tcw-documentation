@@ -16,7 +16,6 @@ import { HomePage } from "./pages/HomePage";
 import { NotFoundPage } from "./pages/NotFoundPage";
 import { StepWorkflowApiReferenceAuthPage } from "./pages/StepWorkflow/StepWorkflowApiReferenceAuthPage";
 import { StepWorkflowApiReferenceIntroPage } from "./pages/StepWorkflow/StepWorkflowApiReferenceIntroPage";
-import { StepWorkflowInitiateWorkflowPage } from "./pages/StepWorkflow/StepWorkflowInitiateWorkflowPage";
 import { StepWorkflowPage } from "./pages/StepWorkflow/StepWorkflowPage";
 import { StepWorkflowQuickstartPage } from "./pages/StepWorkflow/StepWorkflowQuickstartPage";
 import { StepWorkflowApiReferenceApiPage } from "./pages/StepWorkflow/StepWorkflowApiReferenceApiPage";
@@ -84,10 +83,6 @@ function App() {
         {
           path: "/step-workflow/api-reference/api",
           element: <StepWorkflowApiReferenceApiPage />,
-        },
-        {
-          path: "/step-workflow/api-reference/api/initiateworkflow",
-          element: <StepWorkflowInitiateWorkflowPage />,
         },
         {
           path: "/email-notification-workflow",
