@@ -53,7 +53,7 @@ export const SimpleCard = (props: SimpleCardProps) => {
     <motion.div
       ref={btnRef}
       style={{ flex: 1 }}
-      className="group relative w-full flex rounded-2xl bg-zinc-50 transition-shadow hover:shadow-md hover:shadow-zinc-900/5 dark:bg-white/2.5 dark:hover:shadow-black/5"
+      className="group overflow-hidden relative w-full flex rounded-2xl bg-zinc-50 transition-shadow hover:shadow-md hover:shadow-zinc-900/5 dark:bg-white/2.5 dark:hover:shadow-black/5"
     >
       <div className="pointer-events-none">
         <div className="absolute inset-0 rounded-2xl transition duration-300 [mask-image:linear-gradient(white,transparent)] group-hover:opacity-50">
