@@ -18,7 +18,7 @@ export const AppFooter = () => {
   return (
     <Footer
       style={{ textAlign: "center", background: token.colorBgContainer }}
-      className="ml-72"
+      className="ml-80"
     >
       <Flex align="center" justify="space-between">
         <Flex flex={1} justify="flex-start">

@@ -4,10 +4,10 @@ import { MaskedBackground } from "../svg/ MaskedBackground";
 
 export const HomePage = () => {
   return (
-    <div>
+    <div className="px-8">
       <MaskedBackground />
       <Flex vertical className="z-10">
-        <Flex vertical className="py-16">
+        <Flex vertical className="py-16 z-10">
           <Typography.Title level={2}>
             Welcome to The Cloud Docs
           </Typography.Title>

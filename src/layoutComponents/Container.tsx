@@ -5,10 +5,10 @@ export const Container = (props: {
   style?: CSSProperties;
 }) => {
   return (
-    <div className="relative flex h-full flex-col  pt-14" style={props.style}>
+    <div className="relative flex h-full flex-col pt-14" style={props.style}>
       <main className="flex-auto">
         <article className="flex h-full flex-col pb-10">
-          <div className="flex-auto ml-72">{props.children}</div>
+          <div className="flex-auto ml-80">{props.children}</div>
         </article>
       </main>
     </div>

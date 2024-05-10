@@ -12,7 +12,7 @@ export const AppSider = () => {
   return (
     <Sider
       theme="light"
-      width="18rem"
+      width="20rem"
       style={{
         borderRight: `1px solid ${token.colorBorder}`,
         position: "fixed",

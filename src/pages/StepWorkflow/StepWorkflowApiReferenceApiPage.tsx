@@ -98,7 +98,7 @@ stepWorkflowClient.initiateWorkflow(input);`,
     "document": {
       "documentBody": {
         "entities": {
-          "test": "dGVzdA=="
+          "createAccountRequest": "eyJ0ZXN0IjoidGVzdCJ9"
         }
       }
     }
