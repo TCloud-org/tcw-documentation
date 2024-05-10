@@ -74,21 +74,23 @@ export const ApiReference = (props: {
                 </>
               )}
 
-              {models.map((model, i) => (
-                <Collapse
-                  key={i}
-                  expandIconPosition="right"
-                  items={[
-                    {
-                      key: i,
-                      label: (
-                        <Typography.Text strong>{model.name}</Typography.Text>
-                      ),
-                      children: <PropertyList items={model.properties} />,
-                    },
-                  ]}
-                />
-              ))}
+              {models
+                .sort((a, b) => a.name.localeCompare(b.name))
+                .map((model, i) => (
+                  <Collapse
+                    key={i}
+                    expandIconPosition="right"
+                    items={[
+                      {
+                        key: i,
+                        label: (
+                          <Typography.Text strong>{model.name}</Typography.Text>
+                        ),
+                        children: <PropertyList items={model.properties} />,
+                      },
+                    ]}
+                  />
+                ))}
             </Flex>
           </Col>
           <Col {...createSpan(12)}>
@@ -108,12 +110,14 @@ export const ApiReference = (props: {
                 onChange={setRequestCode}
               />
 
-              <CodeBeam
-                snippets={props.responseSnippets}
-                value={responseCode}
-                label="Response"
-                onChange={setResponseCode}
-              />
+              {props.responseSnippets && (
+                <CodeBeam
+                  snippets={props.responseSnippets}
+                  value={responseCode}
+                  label="Response"
+                  onChange={setResponseCode}
+                />
+              )}
             </Flex>
           </Col>
         </Row>

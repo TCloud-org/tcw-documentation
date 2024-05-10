@@ -132,12 +132,13 @@ export const RetentionPeriodModel: ModelProps = {
     {
       property: "period",
       type: "Long",
-      description: "The duration of retention period in days.",
+      description: "The duration of retention period.",
     },
     {
       property: "unit",
       type: "String",
-      description: "The unit of the retention period (e.g., 'DAYS').",
+      description:
+        "The unit of the retention period (e.g., DAYS, WEEKS, MONTHS, YEARS).",
     },
   ],
 };
@@ -273,6 +274,28 @@ export const WorkModel: ModelProps = {
       property: "metadata",
       type: "RouteMetadata",
       description: "Metadata associated with the work item.",
+    },
+  ],
+};
+
+export const PeriodModel: ModelProps = {
+  name: "Period",
+  properties: [
+    {
+      property: "TODAY",
+      description: "Represents the current day.",
+    },
+    {
+      property: "YESTERDAY",
+      description: "Represents the previous day.",
+    },
+    {
+      property: "LAST_WEEK",
+      description: "Represents the previous week.",
+    },
+    {
+      property: "LAST_MONTH",
+      description: "Represents the previous month.",
     },
   ],
 };

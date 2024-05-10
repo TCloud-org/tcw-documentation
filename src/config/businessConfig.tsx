@@ -137,6 +137,11 @@ const stepWorkflowMenuItems: MenuItem[] = [
             title: "GetWorkflowsByClientId",
             titleDecorator: <MenuHttpMethod>GET</MenuHttpMethod>,
           },
+          {
+            href: "/step-workflow/api-reference/api#notifyworkflow",
+            title: "NotifyWorkflow",
+            titleDecorator: <MenuHttpMethod>POST</MenuHttpMethod>,
+          },
         ].sort((a, b) => a.title.localeCompare(b.title)),
       },
     ],

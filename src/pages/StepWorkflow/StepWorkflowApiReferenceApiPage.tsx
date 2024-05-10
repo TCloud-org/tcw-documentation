@@ -9,6 +9,7 @@ import {
   GetWorksInDateRangeOutputProperties,
   InitiateWorkflowInputProperties,
   InitiateWorkflowOutputProperties,
+  PeriodModel,
   RetentionPeriodModel,
   WorkModel,
   WorkflowMetadataModel,
@@ -19,6 +20,9 @@ interface ApiProps {
   key: string;
   children?: ReactNode;
 }
+
+const baseUrl =
+  "https://wos-server-142456886.us-west-2.elb.amazonaws.com/api/private/v1";
 
 const apis: ApiProps[] = [
   {
@@ -36,11 +40,11 @@ const apis: ApiProps[] = [
             key: "curl",
             label: "cURL",
             language: "bash",
-            value: `curl -X POST https://wos-server-142456886.us-west-2.elb.amazonaws.com/api/private/v1/initiate-workflow 
+            value: `curl -X POST ${baseUrl}/initiate-workflow 
 -H "Authorization: Bearer <YOUR_ACCESS_TOKEN>" \\
 -d '{
   "clientId": "<INSERT_YOUR_CLIENT_ID>",
-  "workflowId": "<INSERT_YOUR_WORKFLOW_ID>"
+  "workflowId": 123456789
 }'`,
           },
           {
@@ -49,7 +53,7 @@ const apis: ApiProps[] = [
             language: "java",
             value: `final InitiateWorkflowInput input = InitiateWorkflowInput.builder()
         .clientId("<INSERT_YOUR_CLIENT_ID>")
-        .workflowId(1L) // Insert your workflow id
+        .workflowId(123456789L) // Insert your workflow id
         .build();
 stepWorkflowClient.initiateWorkflow(input);`,
           },
@@ -70,6 +74,58 @@ stepWorkflowClient.initiateWorkflow(input);`,
     ),
   },
   {
+    key: "NotifyWorkflow",
+    children: (
+      <ApiReference
+        method="POST"
+        endpoint="/api/private/v1/notify-workflow"
+        name="NotifyWorkflow"
+        description="This endpoint allows you to initiate a new step workflow"
+        requestBody={InitiateWorkflowInputProperties}
+        requestSnippets={[
+          {
+            key: "curl",
+            label: "cURL",
+            language: "bash",
+            value: `curl -X POST ${baseUrl}/notify-workflow 
+-H "Authorization: Bearer <YOUR_ACCESS_TOKEN>" \\
+-d '{
+  "workflowId": 123456789,
+  "workId": "<INSERT_YOUR_WORK_ID>",
+  "stateNotification": {
+    "resultType": "notified",
+    "resultName": "RequestReceived",
+    "document": {
+      "documentBody": {
+        "entities": {
+          "test": "dGVzdA=="
+        }
+      }
+    }
+  }
+}'`,
+          },
+          {
+            key: "java",
+            label: "Java",
+            language: "java",
+            value: `final NotifyWorkflowInput input = NotifyWorkflowInput.builder()
+        .workflowId(123456789L) // Insert your workflow id
+        .workId("<INSERT_YOUR_WORK_ID>")
+        .stateNotification(null)
+        .build();
+stepWorkflowClient.notifyWorkflow(input);`,
+          },
+        ]}
+        response={[
+          {
+            property: "Void",
+          },
+        ]}
+      />
+    ),
+  },
+  {
     key: "GetWorksInDateRange",
     children: (
       <ApiReference
@@ -79,7 +135,60 @@ stepWorkflowClient.initiateWorkflow(input);`,
         description="This API endpoint retrieves a list of works within a specified date range."
         requestBody={GetWorksInDateRangeInputProperties}
         response={GetWorksInDateRangeOutputProperties}
-        models={[WorkModel]}
+        models={[WorkModel, PeriodModel]}
+        requestSnippets={[
+          {
+            key: "curl",
+            label: "cURL",
+            language: "bash",
+            value: `curl -X POST "${baseUrl}/get-works-in-date-range" \\
+  -H "Authorization: Bearer <YOUR_ACCESS_TOKEN>" \\
+  -d '{
+    "clientId": "<INSERT_YOUR_CLIENT_ID>",
+    "workflowId": 123456789,
+    "start": "2024-05-01T00:00:00Z",
+    "end": "2024-05-10T23:59:59Z"
+  }'`,
+          },
+        ]}
+        responseSnippets={[
+          {
+            key: "json",
+            label: "JSON",
+            language: "json",
+            value: `[
+  {
+    "workId": "work123",
+    "clientId": "client456",
+    "source": "source1",
+    "service": "service1",
+    "operation": "operation1",
+    "resultType": "success",
+    "resultName": "result123",
+    "graphId": 789,
+    "workflowId": 456,
+    "version": 2,
+    "runningOrder": 1,
+    "executionTime": 5000,
+    "createdAt": "2024-05-10T08:30:00Z",
+    "updatedAt": "2024-05-10T10:45:00Z",
+    "retryScheduleId": "retry123",
+    "nextRetryAt": "2024-05-10T12:00:00Z",
+    "metadata": {
+      "document": null,
+      "documentEntityChangeLog": null,
+      "workRequest": null,
+      "httpResponse": {
+        "statusCode": 200,
+        "status": "OK",
+        "reasonPhrase": "Success",
+        "latency": 500
+      }
+    }
+  }
+]`,
+          },
+        ]}
       />
     ),
   },
@@ -99,7 +208,7 @@ stepWorkflowClient.initiateWorkflow(input);`,
             label: "cURL",
             language: "bash",
             value: `curl -X GET \\
-  "https://wos-server-142456886.us-west-2.elb.amazonaws.com/api/private/v1/get-workflows-by-client-id?clientId=<YOUR_CLIENT_ID>" \\
+  "${baseUrl}/get-workflows-by-client-id?clientId=<YOUR_CLIENT_ID>" \\
   -H "Authorization: Bearer <YOUR_ACCESS_TOKEN>"`,
           },
         ]}
