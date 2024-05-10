@@ -78,6 +78,8 @@ export const ApiReference = (props: {
               style={{
                 position: isSticky ? "sticky" : "static",
                 top: "100px",
+                transition: "transform 0.3s ease-in-out",
+                transform: isSticky ? "translateY(-20px)" : "none",
               }}
             >
               <CodeBeam
