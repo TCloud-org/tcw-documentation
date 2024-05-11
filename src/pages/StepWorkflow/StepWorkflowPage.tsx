@@ -6,31 +6,31 @@ import { DocContainer } from "../../layoutComponents/DocContainer";
 const topics = [
   {
     label: "Set up a client (e.g., organization, team, etc.)",
-    href: "/step-workflow/quickstart#set-up-a-client",
+    href: "/step-workflow/getting-started/quickstart#set-up-a-client",
   },
   {
     label: "Create a workflow",
-    href: "/step-workflow/quickstart#create-a-workflow",
+    href: "/step-workflow/getting-started/quickstart#create-a-workflow",
   },
   {
     label: "Add an initial graph version of a workflow",
-    href: "/step-workflow/quickstart#add-a-graph",
+    href: "/step-workflow/getting-started/quickstart#add-a-graph",
   },
   {
     label: "Configure user API endpoint",
-    href: "/step-workflow/quickstart#configure-user-api-endpoint",
+    href: "/step-workflow/getting-started/quickstart#configure-user-api-endpoint",
   },
   {
     label: "Set up authentication for your API endpoint",
-    href: "/step-workflow/quickstart#set-up-api-authentication",
+    href: "/step-workflow/getting-started/quickstart#set-up-api-authentication",
   },
   {
     label: "Create a new retry policy",
-    href: "/step-workflow/quickstart#add-a-retry-policy",
+    href: "/step-workflow/getting-started/quickstart#add-a-retry-policy",
   },
   {
     label: "Initiate a workflow",
-    href: "/step-workflow/quickstart#initiate-a-workflow",
+    href: "/step-workflow/getting-started/quickstart#initiate-a-workflow",
   },
 ];
 
