@@ -183,6 +183,55 @@ export const GetWorksInDateRangeOutputProperties: PropertyItemProps[] = [
   },
 ];
 
+export const NotifyWorkflowInputProperties: PropertyItemProps[] = [
+  {
+    property: "clientId",
+    type: "string",
+    description: "The identifier of the client associated with the workflow.",
+  },
+  {
+    property: "workflowId",
+    type: "number",
+    description: "The unique identifier of the workflow.",
+  },
+  {
+    property: "workId",
+    type: "string",
+    description: "The identifier of the work associated with the workflow.",
+  },
+  {
+    property: "stateNotification",
+    type: "StateNotification",
+    description: "Object representing the state notification details.",
+  },
+];
+
+export const StateNotificationModel: ModelProps = {
+  name: "StateNotification",
+  properties: [
+    {
+      property: "resultType",
+      type: "string",
+      description: "The type of result associated with the notification.",
+    },
+    {
+      property: "resultName",
+      type: "string",
+      description: "The name of the result associated with the notification.",
+    },
+    {
+      property: "document",
+      type: "Document",
+      description: "Object representing the associated document.",
+    },
+    {
+      property: "notifiedAt",
+      type: "ZonedDateTime",
+      description: "The timestamp when the notification was sent.",
+    },
+  ],
+};
+
 export const WorkModel: ModelProps = {
   name: "Work",
   properties: [

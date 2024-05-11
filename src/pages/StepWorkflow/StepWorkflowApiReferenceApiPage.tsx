@@ -3,7 +3,6 @@ import { ReactNode } from "react";
 import { Fragment } from "react/jsx-runtime";
 import { ApiReference } from "../../apiRefComponents/StepWorkflow/ApiReference";
 import {
-  ConfigurationModel,
   DocumentBodyModel,
   DocumentEntityChangeLogModel,
   DocumentModel,
@@ -13,11 +12,11 @@ import {
   GetWorksInDateRangeOutputProperties,
   InitiateWorkflowInputProperties,
   InitiateWorkflowOutputProperties,
+  NotifyWorkflowInputProperties,
   PeriodModel,
   RetentionPeriodModel,
-  RetryConfigModel,
+  StateNotificationModel,
   WorkModel,
-  WorkflowConfigurationModel,
   WorkflowMetadataModel,
   WorkflowModel,
 } from "../../config/propertyConfig";
@@ -87,14 +86,12 @@ stepWorkflowClient.initiateWorkflow(input);`,
         endpoint="/api/private/v1/notify-workflow"
         name="NotifyWorkflow"
         description="This endpoint allows you to initiate a new step workflow"
-        requestBody={InitiateWorkflowInputProperties}
+        requestBody={NotifyWorkflowInputProperties}
         models={[
           DocumentModel,
           DocumentEntityChangeLogModel,
           DocumentBodyModel,
-          WorkflowConfigurationModel,
-          ConfigurationModel,
-          RetryConfigModel,
+          StateNotificationModel,
         ]}
         requestSnippets={[
           {
@@ -123,10 +120,18 @@ stepWorkflowClient.initiateWorkflow(input);`,
             key: "java",
             label: "Java",
             language: "java",
-            value: `final NotifyWorkflowInput input = NotifyWorkflowInput.builder()
-        .workflowId(123456789L) // Insert your workflow id
+            value: `final Document document = Document.create();
+final ObjectMapper objectMapper = new ObjectMapper();
+document.putEntity("YOUR_OBJECT_KEY", objectMapper.writeValueAsBytes("YOUR_OBJECT"));
+final StateNotification notification = StateNotification.builder()
+        .resultType(ActionType.NOTIFIED.getValue())
+        .resultName("RequestReceived")
+        .document(document)
+        .build();
+final NotifyWorkflowInput input = NotifyWorkflowInput.builder()
+        .workflowId(123456789L)
         .workId("<INSERT_YOUR_WORK_ID>")
-        .stateNotification(null)
+        .stateNotification(notification)
         .build();
 stepWorkflowClient.notifyWorkflow(input);`,
           },
