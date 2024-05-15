@@ -9,7 +9,7 @@ const steps = [
       <Typography.Paragraph>
         Go to{" "}
         <ExternalLink
-          href="https://www.tc-workflow.com/service/add"
+          href="https://www.stepworkflow.thecloudworlds.com/service/add"
           target="_blank"
         >
           Add Service

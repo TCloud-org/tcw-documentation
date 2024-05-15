@@ -119,7 +119,10 @@ client.initiateWorkflow(input);`,
       <Typography.Paragraph>
         After the request is sent, you will be able to see a new workflow
         appeared in the{" "}
-        <ExternalLink href="https://www.tc-workflow.com/live" target="_blank">
+        <ExternalLink
+          href="https://www.stepworkflow.thecloudworlds.com/live"
+          target="_blank"
+        >
           live
         </ExternalLink>{" "}
         page

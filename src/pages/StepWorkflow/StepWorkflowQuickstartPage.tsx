@@ -18,7 +18,7 @@ const steps = [
       <Typography.Paragraph>
         Go to{" "}
         <ExternalLink
-          href="https://www.tc-workflow.com/client/add"
+          href="https://www.stepworkflow.thecloudworlds.com/client/add"
           target="_blank"
         >
           Add Client

@@ -12,7 +12,7 @@ const steps = [
       <Typography.Paragraph>
         Go to{" "}
         <ExternalLink
-          href="https://www.tc-workflow.com/graph/create"
+          href="https://www.stepworkflow.thecloudworlds.com/graph/create"
           target="_blank"
         >
           Add Graph

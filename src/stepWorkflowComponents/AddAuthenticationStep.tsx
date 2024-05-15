@@ -9,7 +9,7 @@ const steps = [
       <Typography.Paragraph>
         Go to{" "}
         <ExternalLink
-          href="https://www.tc-workflow.com/auth-token/add"
+          href="https://www.stepworkflow.thecloudworlds.com/auth-token/add"
           target="_blank"
         >
           Add Token
