@@ -54,10 +54,7 @@ export const StepWorkflowPage = () => {
       <HeadingLink level={3}>Guideline</HeadingLink>
       <Typography.Paragraph>
         This guideline walks you through the first steps of using{" "}
-        <Typography.Link
-          href="https://www.thecloudworlds.com/products/step-workflow"
-          target="_blank"
-        >
+        <Typography.Link href="https://www.thecloudworlds.com" target="_blank">
           Step Workflow <ExportOutlined style={{ fontSize: "0.75rem" }} />
         </Typography.Link>
         . You will start with setting up a new client, workflow, graph, service

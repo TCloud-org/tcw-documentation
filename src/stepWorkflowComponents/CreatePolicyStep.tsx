@@ -8,7 +8,7 @@ const steps = [
     children: (
       <Typography.Paragraph>
         Go to{" "}
-        <ExternalLink href="https://www.stepworkflow.thecloudworlds.com/retry-policy/add">
+        <ExternalLink href="https://www.stepworkflow.thecloudworlds.com/step-workflow/add-retry-policy">
           Add Retry Policy
         </ExternalLink>{" "}
         page.

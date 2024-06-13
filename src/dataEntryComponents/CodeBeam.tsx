@@ -99,6 +99,7 @@ export const CodeBeam = (props: {
           backgroundColor: "#0a1021",
           border: "none",
           color: textColor,
+          overflow: "auto",
         }}
       >
         {`${code}`}

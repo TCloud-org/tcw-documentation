@@ -1,7 +1,8 @@
 import { MenuHttpMethod } from "../dataDisplayComponents/MenuHttpMethod";
 import { MenuItem } from "../layoutComponents/AppMenu";
 
-export const logoImageUrl = "https://tcw-icon.s3.us-west-2.amazonaws.com/7.png";
+export const logoImageUrl =
+  "https://utfs.io/f/bd04c0a7-53fe-4f53-9c25-e44a5e0afb75-ejb435.png";
 export const primaryColor = "#4312e5";
 
 export const mainMenuItems: MenuItem[] = [
@@ -164,26 +165,31 @@ export const getSiderItems = (path: string) => {
 };
 
 export const graphXml = `<?xml version="1.0" encoding="UTF-8"?>
-<workflow name="CreateAccountWorkflow" initialState="Start">
+<workflow>
+  <state name="Start">
+		<success name="SystemInitialized" goto="PreprocessingData"/>
+	</state>
   <state name="PreprocessingData" service="WorkflowOrchestratorService" operation="fake">
-    <success name="finalized" goto="InitializeData"/>
+    <success name="Finalized" goto="InitializeData"/>
   </state>
   <state name="InitializeData" service="WorkflowOrchestratorService" operation="fake">
-    <success name="finalized" goto="DataValidation"/>
+    <success name="Finalized" goto="DataValidation"/>
   </state>
   <state name="DataValidation" service="WorkflowOrchestratorService" operation="fake">
-    <success name="finalized" goto="ProcessData"/>
+    <success name="Finalized" goto="ProcessData"/>
   </state>
   <state name="ProcessData" service="WorkflowOrchestratorService" operation="fake">
-    <success name="finalized" goto="TransformData"/>
+    <success name="Finalized" goto="TransformData"/>
   </state>
   <state name="TransformData" service="WorkflowOrchestratorService" operation="fake">
-    <success name="finalized" goto="LoadData"/>
+    <success name="Finalized" goto="LoadData"/>
   </state>
   <state name="LoadData" service="WorkflowOrchestratorService" operation="fake">
-    <success name="finalized" goto="FinalizeProcess"/>
+    <success name="Finalized" goto="FinalizeProcess"/>
   </state>
   <state name="FinalizeProcess" service="WorkflowOrchestratorService" operation="fake">
-    <success name="finalized" goto="terminal"/>
+    <success name="Finalized" goto="End"/>
   </state>
+  <state name="End">
+	</state>
 </workflow>`;

@@ -108,8 +108,7 @@ export const InitiateWorkflowStep = () => {
               label: "Java",
               language: "java",
               value: `final InitiateWorkflowInput input = InitiateWorkflowInput.builder()
-        .clientId("AccountManagementClient")
-        .workflowId(1L)
+        .workflowId("workflow::AccountManagementClient/CreateAccountWorkflow")
         .build();
 client.initiateWorkflow(input);`,
             },
@@ -120,7 +119,7 @@ client.initiateWorkflow(input);`,
         After the request is sent, you will be able to see a new workflow
         appeared in the{" "}
         <ExternalLink
-          href="https://www.stepworkflow.thecloudworlds.com/live"
+          href="https://www.stepworkflow.thecloudworlds.com/step-workflow"
           target="_blank"
         >
           live

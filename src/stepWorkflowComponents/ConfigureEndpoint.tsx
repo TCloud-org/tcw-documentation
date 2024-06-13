@@ -9,7 +9,7 @@ const steps = [
       <Typography.Paragraph>
         Go to{" "}
         <ExternalLink
-          href="https://www.stepworkflow.thecloudworlds.com/service/add"
+          href="https://www.stepworkflow.thecloudworlds.com/step-workflow/add-service-endpoint"
           target="_blank"
         >
           Add Service
@@ -69,8 +69,7 @@ export const ConfigureEndpoint = () => {
             data={{
               Client: "AccountManagementClient",
               Service: "WorkflowOrchestratorService",
-              Endpoint:
-                "http://wos-server-142456886.us-west-2.elb.amazonaws.com/api/private/v1",
+              Endpoint: "http://wos.be.thecloudworlds.com:8080/api/private/v1",
               Environment: "Development",
               Alias: "live",
             }}
