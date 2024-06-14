@@ -47,7 +47,6 @@ const apis: ApiProps[] = [
             value: `curl -X POST ${baseUrl}/initiate-workflow 
 -H "Authorization: Bearer <YOUR_ACCESS_TOKEN>" \\
 -d '{
-  "clientId": "<INSERT_YOUR_CLIENT_ID>",
   "workflowId": "<INSERT_YOUR_WORKFLOW_ID>"
 }'`,
           },
@@ -56,7 +55,6 @@ const apis: ApiProps[] = [
             label: "Java",
             language: "java",
             value: `final InitiateWorkflowInput input = InitiateWorkflowInput.builder()
-        .clientId("<INSERT_YOUR_CLIENT_ID>")
         .workflowId("<INSERT_YOUR_WORKFLOW_ID>")
         .build();
 stepWorkflowClient.initiateWorkflow(input);`,

@@ -7,12 +7,6 @@ export interface ModelProps {
 
 export const InitiateWorkflowInputProperties: PropertyItemProps[] = [
   {
-    property: "clientId",
-    type: "String",
-    description: "An unique identifier of a client.",
-    mandatory: true,
-  },
-  {
     property: "workflowId",
     type: "Long",
     description: "An unique identifier of a workflow.",
@@ -184,16 +178,6 @@ export const GetWorksInDateRangeOutputProperties: PropertyItemProps[] = [
 ];
 
 export const NotifyWorkflowInputProperties: PropertyItemProps[] = [
-  {
-    property: "clientId",
-    type: "string",
-    description: "The identifier of the client associated with the workflow.",
-  },
-  {
-    property: "workflowId",
-    type: "number",
-    description: "The unique identifier of the workflow.",
-  },
   {
     property: "workId",
     type: "string",
