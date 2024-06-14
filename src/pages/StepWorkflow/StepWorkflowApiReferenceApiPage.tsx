@@ -26,8 +26,7 @@ interface ApiProps {
   children?: ReactNode;
 }
 
-const baseUrl =
-  "https://wos-server-142456886.us-west-2.elb.amazonaws.com/api/private/v1";
+const baseUrl = "https://wos.be.thecloudworlds.com:8080/api/private/v1";
 
 const apis: ApiProps[] = [
   {
