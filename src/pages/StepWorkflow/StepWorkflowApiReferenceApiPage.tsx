@@ -48,7 +48,7 @@ const apis: ApiProps[] = [
 -H "Authorization: Bearer <YOUR_ACCESS_TOKEN>" \\
 -d '{
   "clientId": "<INSERT_YOUR_CLIENT_ID>",
-  "workflowId": 123456789
+  "workflowId": "<INSERT_YOUR_WORKFLOW_ID>"
 }'`,
           },
           {
@@ -57,7 +57,7 @@ const apis: ApiProps[] = [
             language: "java",
             value: `final InitiateWorkflowInput input = InitiateWorkflowInput.builder()
         .clientId("<INSERT_YOUR_CLIENT_ID>")
-        .workflowId(123456789L) // Insert your workflow id
+        .workflowId("<INSERT_YOUR_WORKFLOW_ID>")
         .build();
 stepWorkflowClient.initiateWorkflow(input);`,
           },
@@ -100,7 +100,7 @@ stepWorkflowClient.initiateWorkflow(input);`,
             value: `curl -X POST ${baseUrl}/notify-workflow 
 -H "Authorization: Bearer <YOUR_ACCESS_TOKEN>" \\
 -d '{
-  "workflowId": 123456789,
+  "workflowId": "<INSERT_YOUR_WORKFLOW_ID>",
   "workId": "<INSERT_YOUR_WORK_ID>",
   "stateNotification": {
     "resultType": "notified",
@@ -128,7 +128,7 @@ final StateNotification notification = StateNotification.builder()
         .document(document)
         .build();
 final NotifyWorkflowInput input = NotifyWorkflowInput.builder()
-        .workflowId(123456789L)
+        .workflowId("<INSERT_YOUR_WORKFLOW_ID>")
         .workId("<INSERT_YOUR_WORK_ID>")
         .stateNotification(notification)
         .build();
@@ -163,7 +163,7 @@ stepWorkflowClient.notifyWorkflow(input);`,
   -H "Authorization: Bearer <YOUR_ACCESS_TOKEN>" \\
   -d '{
     "clientId": "<INSERT_YOUR_CLIENT_ID>",
-    "workflowId": 123456789,
+    "workflowId": "<INSERT_YOUR_WORKFLOW_ID>",
     "start": "2024-05-01T00:00:00Z",
     "end": "2024-05-10T23:59:59Z"
   }'`,
@@ -176,21 +176,21 @@ stepWorkflowClient.notifyWorkflow(input);`,
             language: "json",
             value: `[
   {
-    "workId": "work123",
+    "workId": "work::ClientA:WorkflowB/b8f62f36-70b4-47d5-8428-8a5414e7abf2",
     "clientId": "client456",
     "source": "source1",
     "service": "service1",
     "operation": "operation1",
     "resultType": "success",
     "resultName": "result123",
-    "graphId": 789,
-    "workflowId": 456,
+    "graphId": "graph::ClientA:WorkflowB/1",
+    "workflowId": "workflow::ClientA/WorkflowB",
     "version": 2,
     "runningOrder": 1,
     "executionTime": 5000,
     "createdAt": "2024-05-10T08:30:00Z",
     "updatedAt": "2024-05-10T10:45:00Z",
-    "retryScheduleId": "retry123",
+    "retryScheduleId": "d2a8b130-4e0f-4a7f-8d16-5b4d37f7c6e1",
     "nextRetryAt": "2024-05-10T12:00:00Z",
     "metadata": {
       "document": null,
@@ -237,9 +237,9 @@ stepWorkflowClient.notifyWorkflow(input);`,
             language: "json",
             value: `[
   {
-    "workflowId": 123456789,
+    "workflowId": "workflow::SampleClient/SampleWorkflow",
     "workflowName": "SampleWorkflow",
-    "clientId": "client123",
+    "clientId": "SampleClient",
     "createdAt": "${new Date().toISOString()}",
     "updatedAt": "${new Date().toISOString()}",
     "nextAvailableVersion": 2,
